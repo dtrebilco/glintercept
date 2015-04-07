@@ -1,0 +1,75 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: StEditLib_wx26 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSPA6.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GR /GX /Zi /Od /I "c:\wxWidgets-2.6.3\include" /I "c:\wxWidgets-2.6.3\lib\vc_lib\mswd" /I "." /I "c:\wxWidgets-2.6.3\contrib\include" /I "..\include" /I "..\..\..\..\Common" /D "WIN32" /D "_LIB" /D "_DEBUG" /D "__WXMSW__" /D "__WXDEBUG__" /D "__WX__" /D "GLI_BUILD_WINDOWS" /Fo"..\..\..\..\Intermediate\StEditLib\vc_mswd_wx26/" /Fd"..\..\..\..\Intermediate\StEditLib\vc_mswd_wx26\StEditLibd_wx26.pdb" /FD /GZ /c 
+"C:\Projects\GLIntercept\Src\Plugins\GLShaderEdit\wxstedit\src\GLIDebugVariableGrid.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSPA6.tmp" 
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSPA7.tmp" with contents
+[
+/nologo /out:"..\..\..\..\..\lib\StEditLibd_wx26.lib" 
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\GLIBitmapNotebook.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\GLIBitmapView.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\GLIDebugVariableGrid.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\GLIShaderData.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\GLIShaderDebug.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\GLIShaders.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\NetworkUtils.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\stedit.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\stedlgs.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\stedlgs_wdr.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\steexprt.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\stefindr.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\steframe.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\stelangs.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\stemenum.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\stenoteb.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\steopts.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\steprefs.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\steprint.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\steshell.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\stesplit.obj
+\Projects\GLIntercept\Src\Intermediate\StEditLib\vc_mswd_wx26\stestyls.obj
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSPA7.tmp"
+<h3>Output Window</h3>
+Compiling...
+GLIDebugVariableGrid.cpp
+Creating library...
+<h3>
+--------------------Configuration: wxStEdit_wx26 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSPA8.tmp" with contents
+[
+..\..\..\..\..\..\lib\StEditLibd_wx26.lib wxmsw26d_html.lib wxbase26d_net.lib wxmsw26d_stc.lib wxmsw26d_adv.lib wxmsw26d_core.lib wxbase26d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib odbc32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib oleacc.lib glslang.lib /nologo /subsystem:windows /incremental:yes /pdb:"..\..\..\..\..\Intermediate\wxStEdit\vc_mswd_wx26/wxStEdit.pdb" /debug /machine:I386 /out:"..\..\..\..\..\Intermediate\wxStEdit\vc_mswd_wx26\wxStEdit.exe" /libpath:"c:\wxWidgets-2.6.3\lib\vc_lib" /libpath:"..\..\lib" 
+\Projects\GLIntercept\Src\Intermediate\wxStEdit\vc_mswd_wx26\wxStEdit.obj
+\Projects\GLIntercept\Src\Intermediate\wxStEdit\vc_mswd_wx26\wxStEdit.res
+\Projects\GLIntercept\lib\StEditLibd_wx26.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSPA8.tmp"
+<h3>Output Window</h3>
+Linking...
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSPAA.bat" with contents
+[
+@echo off
+copy ..\..\..\..\..\Intermediate\wxStEdit\vc_mswd_wx26\wxStEdit.exe c:\projects\glintercept\bin\plugins\GLShaderEdit\GLISciTE.exe
+]
+Creating command line "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSPAA.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+wxStEdit.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

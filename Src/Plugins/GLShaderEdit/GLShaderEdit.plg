@@ -1,0 +1,65 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GLShaderEdit - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP56.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "." /I "..\..\Common" /D "_DEBUG" /D "GLI_BUILD_WINDOWS" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "GLShaderEdit_EXPORTS" /Fo"..\..\Intermediate\Plugins\GLShaderEdit\Debug/" /Fd"..\..\Intermediate\Plugins\GLShaderEdit\Debug/" /FD /GZ /c 
+"C:\Projects\GLIntercept\Src\Plugins\GLShaderEdit\GLFrameBufferCache.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP56.tmp" 
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP57.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:yes /pdb:"..\..\Intermediate\Plugins\GLShaderEdit\Debug/GLShaderEdit.pdb" /debug /machine:I386 /def:".\GLShaderEdit.def" /out:"..\..\Intermediate\Plugins\GLShaderEdit\Debug/GLShaderEdit.dll" /implib:"..\..\Intermediate\Plugins\GLShaderEdit\Debug/GLShaderEdit.lib" /pdbtype:sept 
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\ConfigParser.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\InputUtils.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\MiscUtils.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\NetworkUtils.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\ShaderEditASM.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\ShaderManagerASM.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\ShaderEditGLSL.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\ShaderManagerGLSL.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\SubstituteShaderGLSL.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\atom.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\cpp.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\cppstruct.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\memory.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\scanner.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\symbols.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\tokens.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\ShaderDebugGLSL.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\ShaderParserGLSL.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\ShaderUtilsGLSL.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\GLFrameBufferCache.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\GLRenderCallCache.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\GLShaderEdit.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\SEContext.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\SEInterface.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\ShaderEditManager.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLShaderEdit\Debug\UniqueShaderID.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP57.tmp"
+<h3>Output Window</h3>
+Compiling...
+GLFrameBufferCache.cpp
+Linking...
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP58.bat" with contents
+[
+@echo off
+copy .\..\..\Intermediate\Plugins\GLShaderEdit\Debug\GLShaderEdit.dll ..\..\..\Bin\Plugins\GLShaderEdit\GLShaderEdit.dll
+]
+Creating command line "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP58.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+GLShaderEdit.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

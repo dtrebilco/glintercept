@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_SGIX_TEXTURE_MULTI_BUFFER
+
+enum Main {
+
+  GL_TEXTURE_MULTI_BUFFER_HINT_SGIX       = 0x812E,
+
+};
+

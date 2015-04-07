@@ -1,0 +1,6 @@
+LIBRARY GLShaderEdit.dll
+EXPORTS
+   GetFunctionLogPluginVersion
+   CreateFunctionLogPlugin
+   RegisterDLLEventHandler
+   UnRegisterDLLEventHandler

@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_ANGLE_PROGRAM_BINARY
+
+enum Main {
+
+  GL_PROGRAM_BINARY_ANGLE       = 0x93A6,
+
+};
+

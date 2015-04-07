@@ -1,0 +1,9 @@
+#define GLI_INCLUDE_GL_AMD_DEPTH_CLAMP_SEPARATE
+
+enum Main {
+
+  GL_DEPTH_CLAMP_NEAR_AMD       = 0x901E,
+  GL_DEPTH_CLAMP_FAR_AMD        = 0x901F,
+
+};
+

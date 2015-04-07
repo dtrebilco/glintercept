@@ -1,0 +1,111 @@
+<?xml version="1.0" ?>
+
+<!-- Created by: Francesco Montorsi <frm@users.sourceforge.net>       -->
+<!-- Creation date: 9/10/2004                                         -->
+<!-- RCS-ID: $Id: wxstedit.bkl,v 1.2 2006/03/06 23:04:33 frm Exp $  -->
+
+<makefile>
+
+	<!-- Some defaults for the variables used by wxCode bakefiles -->
+	<set var="WXCODE_BAKEFILEDIR">../../../build/bakefiles</set>
+	<include file="$(WXCODE_BAKEFILEDIR)/defaults.bkl"/>
+
+
+	<!-- Settings for this component -->
+	<!-- =========================== -->
+
+	<set var="COMP_NAME">stedit</set>
+	<set var="COMP_SRC">
+             stedit.cpp
+             stedlgs.cpp
+             stedlgs_wdr.cpp
+             steexprt.cpp
+             stefindr.cpp
+             steframe.cpp
+             stelangs.cpp
+             stemenum.cpp
+             stenoteb.cpp
+             steopts.cpp
+             steprefs.cpp
+             steprint.cpp
+             steshell.cpp
+             stesplit.cpp
+             stestyls.cpp
+       </set>
+	<set var="COMP_HDR">
+             wx/stedit/pairarr.h
+             wx/stedit/setup0.h
+             wx/stedit/stedefs.h
+             wx/stedit/stedit.h
+             wx/stedit/stedlgs.h
+             wx/stedit/steexprt.h
+             wx/stedit/stefindr.h
+             wx/stedit/steframe.h
+             wx/stedit/stelangs.h
+             wx/stedit/stemenum.h
+             wx/stedit/stenoteb.h
+             wx/stedit/steopts.h
+             wx/stedit/steprefs.h
+             wx/stedit/steprint.h
+             wx/stedit/steshell.h
+             wx/stedit/stesplit.h
+             wx/stedit/stestyls.h
+             wx/stedit/wx24defs.h
+        </set>
+	<set var="COMP_SAMPLE_DIR">$(COMP_BASEPATH)/samples/stedit</set>
+	<set var="COMP_SAMPLE_SRC">wxstedit.cpp</set>
+	<set var="WX_UNICODE_DEFAULT">1</set>
+	<set var="WX_VERSION_DEFAULT">26</set>
+
+    <set var="COMP_WANT_INSTALL_WXHEADERS_TARGET">0</set>
+
+
+	<!-- The wxCode bakefile to include after the definition of the COMP_XXXX variables... -->
+	<include file="$(WXCODE_BAKEFILEDIR)/wxcode.bkl"/>
+
+    <!-- override build directory so that multiple builds with different options are possible -->
+    <set var="POSTFIX">
+        <if cond="WX_SHARED=='0'">_lib</if>
+        <if cond="WX_SHARED=='1'">_dll</if>
+    </set>
+    <if cond="FORMAT!='autoconf'">
+        <set var="BUILDDIR">$(FORMAT)$(WXLIBPOSTFIX)$(POSTFIX)</set>
+    </if>
+
+    <!-- our headers are not directly in include/wx ! -->
+    <if cond="FORMAT_HAS_MAKE_INSTALL=='1'">
+        <data-files-tg id="install-wxheaders">
+            <files>$(COMP_BASEPATH)$(DIRSEP)include$(DIRSEP)wx$(DIRSEP)stedit$(DIRSEP)*.h</files>
+            <install-to>$(INCLUDEDIR)/wx/stedit</install-to>
+        </data-files-tg>
+    </if>
+
+	<!-- The real target: wxcode.bkl does not declare a real target but a template called
+	     "complib". In this way modifications are allowed to the basic template. -->
+	<lib id="stedit_lib" template="complib" cond="WX_SHARED=='0'">
+       <include>$(DOLLAR)(WXWIN)/contrib/include</include>
+	</lib>
+	<dll id="stedit_dll" template="compdll" cond="WX_SHARED=='1'">
+       <include>$(DOLLAR)(WXWIN)/contrib/include</include>
+        <wx-lib>core</wx-lib>
+        <wx-lib>base</wx-lib>
+	</dll>
+	<set var="MSVC6PRJ_MERGED_TARGETS">stedit=stedit_lib+stedit_dll</set>
+
+
+	<!-- The sample of the component: as for the LIB target, this exe derives from a
+	     template contained in wxcode.bkl which can be modified here -->
+	<exe id="wxstedit" template="compsample">
+		<res-include>$(COMP_BASEPATH)$(DIRSEP)samples$(DIRSEP)stedit</res-include>
+		<win32-res>$(COMP_BASEPATH)$(DIRSEP)samples$(DIRSEP)stedit$(DIRSEP)wxstedit.rc</win32-res>
+        <include>$(DOLLAR)(WXWIN)/contrib/include</include>
+
+		<library>stedit_lib</library>
+<!--        <lib-path>$(DOLLAR)(WXWIN)/contrib/lib</lib-path> -->
+		<wx-lib>stc</wx-lib>
+        <wx-lib>core</wx-lib>
+        <wx-lib>base</wx-lib>
+	</exe>
+
+</makefile>
+

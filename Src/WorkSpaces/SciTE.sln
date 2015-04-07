@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SciLexer", "..\Plugins\GLShaderEdit\scintilla\vcbuild\SciLexer.vcproj", "{64C3A0E5-AE1E-4F2E-A940-0BB2A35491DB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SciTE", "..\Plugins\GLShaderEdit\scite\vcbuild\SciTE.vcproj", "{9C7A6BC8-2515-4B23-A528-28D2A970B65F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{64C3A0E5-AE1E-4F2E-A940-0BB2A35491DB} = {64C3A0E5-AE1E-4F2E-A940-0BB2A35491DB}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64C3A0E5-AE1E-4F2E-A940-0BB2A35491DB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{64C3A0E5-AE1E-4F2E-A940-0BB2A35491DB}.Debug|Win32.Build.0 = Debug|Win32
+		{64C3A0E5-AE1E-4F2E-A940-0BB2A35491DB}.Release|Win32.ActiveCfg = Release|Win32
+		{64C3A0E5-AE1E-4F2E-A940-0BB2A35491DB}.Release|Win32.Build.0 = Release|Win32
+		{9C7A6BC8-2515-4B23-A528-28D2A970B65F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9C7A6BC8-2515-4B23-A528-28D2A970B65F}.Debug|Win32.Build.0 = Debug|Win32
+		{9C7A6BC8-2515-4B23-A528-28D2A970B65F}.Release|Win32.ActiveCfg = Release|Win32
+		{9C7A6BC8-2515-4B23-A528-28D2A970B65F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

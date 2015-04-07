@@ -1,0 +1,6 @@
+LIBRARY GLExtOverride.dll
+EXPORTS
+   GetFunctionLogPluginVersion
+   CreateFunctionLogPlugin
+   RegisterDLLEventHandler
+   UnRegisterDLLEventHandler

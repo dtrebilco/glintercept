@@ -1,0 +1,26 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: StEditLib_wx26 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSPE1.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GR /GX /Zi /Od /I "c:\wxWidgets-2.6.3\include" /I "c:\wxWidgets-2.6.3\lib\vc_lib\mswd" /I "." /I "c:\wxWidgets-2.6.3\contrib\include" /I "..\include" /D "WIN32" /D "_LIB" /D "_DEBUG" /D "__WXMSW__" /D "__WXDEBUG__" /D "__WX__" /D "GLI_BUILD_WINDOWS" /Fo"..\..\..\..\Intermediate\StEditLib\vc_mswd_wx26/" /Fd"..\..\..\..\Intermediate\StEditLib\vc_mswd_wx26\StEditLibd_wx26.pdb" /FD /GZ /c 
+"C:\Projects\GLIntercept\Src\Plugins\GLShaderEdit\wxstedit\src\GLIBitmapNotebook.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSPE1.tmp" 
+<h3>Output Window</h3>
+Compiling...
+Skipping... (no relevant changes detected)
+GLIBitmapNotebook.cpp
+
+
+
+<h3>Results</h3>
+GLIBitmapNotebook.obj - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

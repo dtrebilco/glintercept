@@ -1,0 +1,29 @@
+/* XPM */
+static char *DiffImage_xpm[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 7 1",
+"  c black",
+". c #516F2A",
+"X c #4E4E4E",
+"o c #91B16E",
+"O c gray57",
+"+ c gray100",
+"@ c None",
+/* pixels */
+"@@@@@@@.........",
+"@@@@@@@.ooooooo.",
+"@@@@@@@.ooooooo.",
+"@@@@@@@.ooooooo.",
+"@@@@ @@.ooooooo.",
+"@ @ @@@.........",
+"@  @@@@@@@@@@@@@",
+"@   @@@@@@@@@@@@",
+"@@@@@@@@@@@@   @",
+"@@@@@@@@@@@@@  @",
+"XXXXXXXXX@@@ @ @",
+"XOOOOOOOX@@ @@@@",
+"XOOOOOOOX@@@@@@@",
+"XOOOOOOOX@@@@@@@",
+"XOOOOOOOX@@@@@@@",
+"XXXXXXXXX@@@@@@@"
+};

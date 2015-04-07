@@ -1,0 +1,464 @@
+//////////////////////////////////////////////////////////////
+//
+//   GLI - openGL Intercept Configuration file
+//
+//////////////////////////////////////////////////////////////
+//
+// (Note: all options are case sensetitive)
+//
+//////////////////////////////////////////////////////////////
+
+//ProfileName = "Full Debug";
+//ProfileDescription = "Full debugging options - Very slow";
+
+//////////////////////////////////////////////////////////////
+//
+//  Log Options:
+//
+//////////////////////////////////////////////////////////////
+//
+//  LogEnabled      - Enable function call logging
+//
+//  LogFlush        - If true, will flush the logger after each OpenGL call is made.
+//                    This is useful to catch a OpenGL call that crashes the 
+//                    application. This only applies to text file logging.  
+//
+//  LogPath         - Path to store the logged files. If not specified, files 
+//                    will be stored relative to the GLI OpenGL dll.
+//
+//  LogFileName     - The name of the file to log to (without extension)
+//  
+//  AdditionalRenderCalls - Names of additional OpenGL functions that are to be treated as render calls. 
+//                    (extra frame and state info can be dumped at render calls)
+//
+//  LogMaxNumFrames - The maximum number of frames that will be logged. 
+//                    This is useful for retrieving startup information from a 
+//                    application or limiting the file size on apps that make 
+//                    a lot of OpenGL calls (Note: This also affects per-frame logging)
+//  
+//  LogFormat       - The format of the log. If equal to "XML" (without quotes) 
+//                    will log in the XML format. Else, the plain text format is used.
+//
+//  XMLFormat::XSLFile - When the log format is XML, this option specifies the XSL file
+//                       to be used (if any). A XSL file usually formats the XML into a
+//                       readable HTML format.
+//
+//  XMLFormat::BaseDir - The base (or source) directory where the XSL file can be found.
+//
+//////////////////////////////////////////////////////////////
+
+FunctionLog
+{
+  LogEnabled = True;
+  LogFlush   = True;
+  //LogPath     = "c:\temp\";
+  LogFileName = "gliInterceptLog"
+
+  //AdditionalRenderCalls = ("glClear");
+
+  //LogMaxNumFrames = 200;
+
+  //LogFormat   = XML;
+
+  XMLFormat
+  {
+    XSLFile = gliIntercept_DHTML2.xsl;
+    BaseDir = "%InstallPath%\XSL";
+  }
+}
+
+
+//////////////////////////////////////////////////////////////
+//
+//  LogPerFrame Options:
+//
+//////////////////////////////////////////////////////////////
+//
+//  Enabled         - Enable logging per frame. If this is true, instead of 
+//                    logging all OpenGL calls, the below frame start keys will
+//                    enable the loggers at the start of a frame. The loggers
+//                    will be disabled when the keys are pressed again and the next 
+//                    frame is reached (see OneFrameOnly for other options).
+//
+//                    Output of logging is saved to a directory called 
+//                    Frame_XXXX where XXXX is the frame number that logging
+//                    started.
+//
+//  FrameStartKeys  - The keys used to enable/disable logging. Valid values can be any 
+//                    combination of 0-9,a-z,f1-f12,ctrl,shift,tab,lwin,rwin,
+//                    print,up,down,left,right,add,sub,insert,delete etc.
+//
+//  OneFrameOnly    - If enabled, will only log only one frame per key-press.
+//                    Loggers will be disabled at the end of the next frame.
+//
+//////////////////////////////////////////////////////////////
+
+LogPerFrame
+{
+  Enabled = False;
+  FrameStartKeys = (ctrl,shift,f);
+  OneFrameOnly = True; 
+}
+
+
+
+
+//////////////////////////////////////////////////////////////
+//
+//  Input Files:
+//
+//////////////////////////////////////////////////////////////
+//
+//  GLFunctionDefines - The file to retrieve the OpenGL function defines from.
+//                      (The text header files that contain the parameters of OpenGL functions to be logged)
+//
+//  GLSystemLib       - The full path to the "real" OpenGL system library. This will be assigned automatically
+//                      so usually does not have to be defined.
+//
+//////////////////////////////////////////////////////////////
+
+InputFiles
+{
+  GLFunctionDefines = "%InstallPath%\GLFunctions\gliIncludes.h"
+  //GLSystemLib     = "c:\windows\system32\opengl32.dll"
+}
+
+//////////////////////////////////////////////////////////////
+//
+//  Error Checking:
+//
+//////////////////////////////////////////////////////////////
+//
+//  GLErrorChecking - A OpenGL glGetError() is made after all appropiate OpenGL calls. 
+//                    If an error is detected, the error code is logged to the current text/XML log next 
+//                    to the function that caused the error.
+//                    (OpenGL Error context is still saved so application invoked glGetError() calls are safe)  
+//
+//  ThreadChecking  - While GLIntercept is not currently thread-safe, (ie. So you cannot have multiple render 
+//                    contexts active at the same time) enabling this option will perform basic thread checking. 
+//                    (Will currently check OpenGL calls to see if they are made on the thread with the 
+//                     active render context)
+//
+//  BreakOnError    - (used with above) Issue programmer debug breakpoint on an error.
+//                    Note that glIntercept alters the stack, so to get a valid call stack when debugging
+//                    you will need to step through some assembly (F10 on VC6) until the stack is restored. 
+//
+//  LogOnError      - (used with above) Log all OpenGL errors to the GLIntercept error log (gliLog.txt).
+//
+//  ExtendedErrorLog - (used with above) Report all available data about the function the produced the error.
+//                     (ie. Full resolved parameters that were passed to the function are reported.)
+//                     (Enabling this option will cause a severe slowdown even when no errors are produced. Only 
+//                      enable when debugging specific errors)
+//
+//  DebuggerErrorLog - Mirror the contents of the error log (gliLog.txt) file to the debuggers' window.
+//
+//////////////////////////////////////////////////////////////
+
+ErrorChecking
+{
+  GLErrorChecking  = True;
+  ThreadChecking   = True;
+  BreakOnError     = True;
+  LogOnError       = True;
+  ExtendedErrorLog = True;
+  DebuggerErrorLog = True;
+}
+
+//////////////////////////////////////////////////////////////
+//
+//  Image logging:
+//
+//////////////////////////////////////////////////////////////
+//
+//  LogEnabled    - Enabled the image logger. OpenGL textures are saved to the directory 
+//                  "Images" under the main log path. Only the texture types specified in
+//                  SaveGLTypes are saved.
+//
+//  RenderCallStateLog - If enabled, each render call issued will list the currently bound
+//                       textures for all texture stages. (works with text and XML logging)
+// 
+//  SaveFormats    - The image formats to save the textures in. Current valid formats are 
+//                   PNG,JPG and TGA. Note that more than one format can be specified. 
+//                   (ie. (PNG,TGA) will save all textures twice, once in PNG format, once
+//                    in TGA format) 
+//
+//                   Note on image formats:
+//                   TGA - Is pixel precise and is the fastest save format but is also the biggest. 
+//                         TGA's are also not supported by web browsers (if you use XML with XSL to view the logs).
+//                   PNG - Is pixel precise and is slower to save but is smaller than TGA. 
+//                         PNG's are brower compatable.
+//                   JPG - Is a format that does not save alpha and saves colors in a lossy format.
+//                         It is the smallest format and is slower to save than TGA's.
+//                         JPG's are brower compatable.
+//
+//  FlipXAxis      - The saving of textures is upside-down by default. Using this option will 
+//                   flip the image before saving.
+//
+//  TileCubeMaps   - Cube map textures are saved as six individual images. Enabling this option enables 
+//                   the six image to be tiled together (flattened cube shaped) and saved as one image.
+//
+//  SaveGLTypes    - The types of OpenGL textures to save. Valid options are 1D,2D,3D and CUBE.
+//                   Note: NVRect textures use the 2D option.
+//
+//  SavePbufferTex - This option enables/disables the saving of textures that are bound from a p-buffer.
+//                   Note: P-Buffer textures are saved each time a p-buffer is bound to the texture.
+//                   (ie. no checks are performed to see if the p-buffer has changed)
+//
+//  ImageIcon->Enabled    - This enables saving a icon version of all images saved. (useful in XML browser viewing)
+//
+//  ImageIcon->SaveFormat - The format of the save icon images (TGA,PNG or JPG)
+//
+//  ImageIcon->Size       - The size of the icons to save
+//
+//////////////////////////////////////////////////////////////
+
+ImageLog
+{
+  LogEnabled  = True;
+
+  RenderCallStateLog = True;
+
+  SaveFormats = PNG;
+  FlipXAxis   = False;
+  TileCubeMaps= True;
+  
+  SaveGLTypes = (1D,2D,3D,CUBE);
+  SavePbufferTex = True;
+
+  ImageIcon
+  {
+    Enabled=True;
+    SaveFormat = JPG;
+    Size = 40;
+  }
+}
+
+//////////////////////////////////////////////////////////////
+//
+//  Shader logging
+//
+//////////////////////////////////////////////////////////////
+//
+//  LogEnabled    - Enabled the shader logger. OpenGL shaders/programs are saved to the directory 
+//                  "Shaders" under the main log path. Supported types included ARB/NV vertex/fragment
+//                  programs and vertex/fragment GLSL shaders/programs. ATI specific vertex/fragment 
+//                  shaders are not supported.
+//
+//  RenderCallStateLog - If enabled, each render call issued will list the currently bound
+//                       shaders (vertex and fragment). (works with text and XML logging)
+//
+//  AttachLogState - If enabled, attitional information such as compile/link state and additional
+//                   driver information may be attached to each shader/program. 
+//                   (Currently only GLSL support). Note that enabling this option may force 
+//                   shaders to complete compiling immediately. 
+//
+//  ValidatePreRender - If the above AttachLogState is enabled, this option will perform a validation of
+//                      the shader before each render and append it to the log. Enabling this option will
+//                      cause the shader to be re-saved at each render call. 
+//                      (GLSL only feature via glValidateProgram) 
+//
+//  UniformLogPreRender - If the above AttachLogState is enabled, this option will dump all uniforms that 
+//                        are active in the shader before each render. Enabling this option will
+//                        cause the shader to be re-saved at each render call. (GLSL only feature)
+//
+//////////////////////////////////////////////////////////////
+
+ShaderLog
+{
+  LogEnabled = True;
+  
+  RenderCallStateLog = True;
+
+  AttachLogState      = True;
+  ValidatePreRender   = False;
+  UniformLogPreRender = False;
+
+  //Future formatting options
+}
+
+//////////////////////////////////////////////////////////////
+//
+//  Display List logging
+//
+//////////////////////////////////////////////////////////////
+//
+//  LogEnabled    - Enabled the display list logger. OpenGL display lists are saved to the directory 
+//                  "DisplayLists" under the main log path. If a program has a lot of big glBegin/glEnd
+//                  sections in display lists, (ie 1000's of glVertex calls) the application may seem 
+//                  un-responsive on startup as all these calls are processed on the list creation.
+//
+//////////////////////////////////////////////////////////////
+
+DisplayListLog
+{
+  LogEnabled = True;
+
+}
+
+//////////////////////////////////////////////////////////////
+//
+//  Frame(Buffer) logging
+//
+//////////////////////////////////////////////////////////////
+//
+//  LogEnabled    - Enabled the frame(buffer) logger. When enabled, each render call can 
+//                  save the pre/post/diff frame buffer (color or depth) to view the changes 
+//                  that the render call made. Frame buffer saves are written to a directory 
+//                  "Frames" under the main log path.
+//
+//  SaveFormat    - The image format to save the frame buffer in. Current options are TGA,PNG, and JPG.
+//                  (see ImageLog::SaveFormats for a decription of the formats)
+//
+//  FrameIcon->Enabled - This enables saving a icon version of all images saved. (useful in XML browser viewing)
+//
+//  FrameIcon->SaveFormat - The format of the save icon images (TGA,PNG or JPG)
+//
+//  FrameIcon->Size    - The size of the icons to save
+//
+//  FrameMovie->Enabled - This enables a movie of the "post" and "diff" frame buffers to be saved. If multiple, buffers
+//                        are saved, they are tiled together. (This is useful to quicky inspect how a frame is composed)
+//                        The resulting movie is called FrameMovie.avi in the frame buffer directory.
+//
+//  FrameMovie->Size    - The width height of the saved frame buffers. (ie. (640,480)) The resulting movie will be 
+//                        larger if multiple buffers are saved at once as they are tiled together.
+//
+//  FrameMovie->FrameRate - The frame rate of the saved movie.
+//
+//  FrameMovie->Compression  - The list of compression codecs used to save the movie (usually 4 letters).
+//                             The first valid codec is used. Special codecs are:
+//                             "menu" -  will display a menu for the user to select a codec.
+//                             "none" -  will use no compression.
+//
+//  ColorBufferLog - The color frame buffer save options. Options can include any combination of
+//                   (pre,post,diff). 
+//                   pre  -  The frame's color buffer is saved before the render call
+//
+//                   post -  The frame's color buffer is saved after the render call
+//
+//                   diff -  The difference between the pre and post buffer saves is written.
+//                           (green represents pixels with no differnce. If the image is red, 
+//                            no image differences were detected)
+//
+//  DepthBufferLog - The depth frame buffer save options. Options are the same as in ColorBufferLog.
+//                   (Note: Depth-buffer saving can be very slow)
+//
+//  StencilBufferLog - The stencil frame buffer save options. Options are the same as in ColorBufferLog.
+//                   (Note: Stencil-buffer saving can be very slow)
+//
+//  StencilColors - When saving the stencil buffer, it can be useful to save the buffer with color codes.
+//                  (ie stencil value 1 = red) This array supplies index color pairs for each stencil 
+//                  value up to 255. The indices must be in order and the colors are in the format 
+//                  AABBGGRR. If an index is missing, it will take the value of the index as the color.
+//                  (ie. stencil index 128 = (255, 128,128,128) = greyscale values)
+//
+//////////////////////////////////////////////////////////////
+
+FrameLog
+{
+  LogEnabled = False;
+  SaveFormat = JPG;
+
+  FrameIcon
+  {
+    Enabled = True;
+    SaveFormat = JPG;
+    Size = 40;
+  }
+  FrameMovie
+  {
+    Enabled = False;
+    Size    = (640,480);
+    FrameRate = 15;
+    Compression = ("mpg4","divx","none");
+  }
+
+  ColorBufferLog = (pre,post,diff);
+  //DepthBufferLog = (pre,post,diff);
+
+  //StencilBufferLog = (pre,post,diff);
+  StencilColors = (0,0xFF000000,   //Black
+                   1,0xFFFF0000,   //Blue
+                   2,0xFFFFFF00,   //Light Blue
+                   3,0xFF0000FF,   //Red
+                   4,0xFF00FFFF,   //Yellow
+                   5,0xFFFF00FF,   //Purple
+                   6,0xFF80FFFF,   //Bright Yellow
+                   7,0xFFFFFFFF);  //White (Note green is not used as that is the "diff" color)
+
+}
+
+
+
+//////////////////////////////////////////////////////////////
+//
+//  Function time logging
+//
+//////////////////////////////////////////////////////////////
+//
+//  NOTE: It is important to not mis-use the results of this logger. OpenGL is a very pipelined
+//        API and you can not optimize your code based on how long is spent in each function call.
+//        This logger is only intended for advanced users to determine where pipeline stalls "MAY"
+//        have occured and determine speeds of operations such as glReadPixels etc.
+//
+//  LogEnabled    - Enabled the timer log. When enabled, the time taken inside each OpenGL 
+//                  function is added to the main log. (if enabled). The logging reports 
+//                  in microseconds (millionth of a second). Only take these results as
+//                  approximate figures as GLIntercept will add a small amout of overhead. 
+//                  (More overhead may be indicated in the functions wglGetProcAddress, 
+//                   all wgl*(context) functions, glBegin,glEnd,glGetError)
+//
+//                  If you are using this logger to determine where pipeline stalls occur,
+//                  ensure to disable ALL other loggers (image/shader/frame etc) as these
+//                  loggers may cause pipline stalls. Also disable parameter logging by
+//                  not defining "GLFunctionDefines" and use flat text logging to get the
+//                  fastest logging possible. (and hence the most accurate results)
+//
+//  LogCutoff    -  The number of microseconds below which the time value is not reported.
+//
+//////////////////////////////////////////////////////////////
+
+TimerLog
+{
+  LogEnabled = False;
+ 
+  LogCutoff  = 20; 
+
+}
+
+
+//////////////////////////////////////////////////////////////
+//
+//  Plugins
+//
+//////////////////////////////////////////////////////////////
+//
+//  BaseDir    - The base directory where the plugins can be found
+//
+//  Plugins    - Listing of all plugins to load (and the locations
+//               to load from) Under each plugin, plugin specific options
+//               can be specified. 
+//
+//
+//////////////////////////////////////////////////////////////
+
+PluginData
+{
+
+  BaseDir = "%InstallPath%\Plugins";
+
+  Plugins
+  {
+
+    //
+    // Name of plugin   |  Plugin load location
+    // {  Plugin specific options. (See the plugins' config.ini file for options) }
+
+    // OpenGLFreeCamera = ("GLFreeCam/GLFreeCam.dll")
+    // {
+    //    CameraMoveSpeed   = 10.0;
+    // }
+
+  }
+}
+
+

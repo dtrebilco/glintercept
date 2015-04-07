@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_QCOM_WRITEONLY_RENDERING
+
+enum Main {
+
+  GL_WRITEONLY_RENDERING_QCOM       = 0x8823,
+
+};
+

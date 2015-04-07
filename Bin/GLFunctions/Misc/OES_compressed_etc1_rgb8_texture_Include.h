@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_OES_COMPRESSED_ETC1_RGB8_TEXTURE
+
+enum Main {
+
+  GL_ETC1_RGB8_OES       = 0x8D64,
+
+};
+

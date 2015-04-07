@@ -1,0 +1,26 @@
+/* XPM */
+static char *zoom_xpm[] = {
+/* columns rows colors chars-per-pixel */
+"16 15 5 1",
+"  c black",
+". c #808080",
+"X c #9D9DA1",
+"o c None",
+"O c gray100",
+/* pixels */
+"oooo    oooooooo",
+"oo  oooo  oooooo",
+"o .OOoooo. ooooo",
+"o OOoooooo ooooo",
+" oOoooooooo oooo",
+" oooooooooo oooo",
+" oooooooooo oooo",
+" oooooooXoo oooo",
+"o oooooXXo ooooo",
+"o .ooXXXo. ooooo",
+"oo  oooo   .oooo",
+"oooo    oo.  ooo",
+"ooooooooooo   oo",
+"oooooooooooo   o",
+"ooooooooooooo Xo"
+};

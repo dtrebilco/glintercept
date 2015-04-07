@@ -1,0 +1,48 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GLFramePing - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP277.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "." /I "..\..\Common" /D "_DEBUG" /D "GLI_BUILD_WINDOWS" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "GLFramePing_EXPORTS" /Fo"..\..\Intermediate\Plugins\GLFramePing\Debug/" /Fd"..\..\Intermediate\Plugins\GLFramePing\Debug/" /FD /GZ /c 
+"C:\Projects\GLIntercept\Src\Common\ConfigParser.cpp"
+"C:\Projects\GLIntercept\Src\Plugins\GLFramePing\GLFramePing.cpp"
+"C:\Projects\GLIntercept\Src\Plugins\GLFramePing\PingPlugin.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP277.tmp" 
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP278.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:yes /pdb:"..\..\Intermediate\Plugins\GLFramePing\Debug/GLFramePing.pdb" /debug /machine:I386 /def:".\GLFramePing.def" /out:"..\..\Intermediate\Plugins\GLFramePing\Debug/GLFramePing.dll" /implib:"..\..\Intermediate\Plugins\GLFramePing\Debug/GLFramePing.lib" /pdbtype:sept 
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLFramePing\Debug\ConfigParser.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLFramePing\Debug\GLFramePing.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLFramePing\Debug\PingPlugin.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP278.tmp"
+<h3>Output Window</h3>
+Compiling...
+ConfigParser.cpp
+GLFramePing.cpp
+PingPlugin.cpp
+Generating Code...
+Linking...
+   Creating library ..\..\Intermediate\Plugins\GLFramePing\Debug/GLFramePing.lib and object ..\..\Intermediate\Plugins\GLFramePing\Debug/GLFramePing.exp
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP27C.bat" with contents
+[
+@echo off
+copy .\..\..\Intermediate\Plugins\GLFramePing\Debug\GLFramePing.dll ..\..\..\Bin\Plugins\GLFramePing\GLFramePing.dll
+]
+Creating command line "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP27C.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+GLFramePing.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_FJ_SHADER_BINARY_GCCSO
+
+enum Main {
+
+  GL_GCCSO_SHADER_BINARY_FJ       = 0x9260,
+
+};
+

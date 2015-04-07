@@ -1,0 +1,10 @@
+#define GLI_INCLUDE_EXT_PACKED_FLOAT
+
+
+enum Main {
+  
+  //GL_R11F_G11F_B10F_EXT               = 0x8C3A,
+  //GL_UNSIGNED_INT_10F_11F_11F_REV_EXT = 0x8C3B,
+  GL_RGBA_SIGNED_COMPONENTS_EXT       = 0x8C3C,
+
+};

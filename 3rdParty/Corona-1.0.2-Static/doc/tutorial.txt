@@ -1,0 +1,63 @@
+This is a very simple introduction to a very simple API.  (I love
+simple APIs. :) If you want more in-depth documentation, see corona.h.
+
+First, #include <corona.h>
+
+Corona has a C++ API.  All symbols are in the 'corona' namespace.  For
+convenience, you may wish to:
+
+#include <corona.h>
+using namespace corona;
+
+However, this document assumes you don't want to clutter the global
+namespace, and thus will prefix Corona symbols with corona::.
+
+The most basic way to load an image is as follows:
+
+
+corona::Image* image = corona::OpenImage("image.png");
+if (!image) {
+  // error
+}
+
+int width = image->getWidth();
+int height = image->getHeight();
+corona::PixelFormat format = image->getFormat();
+void* pixels = image->getPixels();
+switch (format) {
+  case corona::PF_R8G8B8A8:  // process image data
+  case corona::PF_R8G8B8:    // process image data
+  default:  // can't handle the format?
+}
+
+delete image;
+
+
+However, since I hate manually dealing with the possibility of
+multiple pixel formats, I'd like corona to just give me the image in a
+single format I can handle.  The second parameter to OpenImage is the
+format you want the returned image in.  It defaults to PF_DONTCARE
+(i.e., just give me any format you can).  The third parameter is the
+file format, which defaults to FF_AUTODETECT.
+
+
+corona::Image* image = corona::OpenImage("img.png", corona::PF_R8G8B8A8);
+if (!image) {
+  // error!
+}
+
+int width  = image->getWidth();
+int height = image->getHeight();
+void* pixels = image->getPixels();
+
+// we're guaranteed that the first eight bits of every pixel is red,
+// the next eight bits is green, and so on...
+
+typedef unsigned char byte;
+byte* p = (byte*)pixels;
+for (int i = 0; i < width * height; ++i) {
+  byte red   = *p++;
+  byte green = *p++;
+  byte blue  = *p++;
+  byte alpha = *p++;
+}

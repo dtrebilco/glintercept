@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLIntercept", "..\MainLib\GLIntercept.vcproj", "{B66644D9-D3C1-414D-8C59-58973E92A954}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C} = {2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoronaStatic", "..\..\3rdParty\Corona-1.0.2-Static\vc8\corona\CoronaStatic.vcproj", "{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B66644D9-D3C1-414D-8C59-58973E92A954}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B66644D9-D3C1-414D-8C59-58973E92A954}.Debug|Win32.Build.0 = Debug|Win32
+		{B66644D9-D3C1-414D-8C59-58973E92A954}.Debug|x64.ActiveCfg = Debug|x64
+		{B66644D9-D3C1-414D-8C59-58973E92A954}.Debug|x64.Build.0 = Debug|x64
+		{B66644D9-D3C1-414D-8C59-58973E92A954}.Release|Win32.ActiveCfg = Release|Win32
+		{B66644D9-D3C1-414D-8C59-58973E92A954}.Release|Win32.Build.0 = Release|Win32
+		{B66644D9-D3C1-414D-8C59-58973E92A954}.Release|x64.ActiveCfg = Release|x64
+		{B66644D9-D3C1-414D-8C59-58973E92A954}.Release|x64.Build.0 = Release|x64
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Debug|Win32.Build.0 = Debug|Win32
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Debug|x64.ActiveCfg = Debug|x64
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Debug|x64.Build.0 = Debug|x64
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Release|Win32.ActiveCfg = Release|Win32
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Release|Win32.Build.0 = Release|Win32
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Release|x64.ActiveCfg = Release|x64
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

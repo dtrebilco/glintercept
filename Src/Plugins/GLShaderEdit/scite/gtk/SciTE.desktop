@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=SciTE
+GenericName=Text Editor
+Type=Application
+Comment=SciTE Text Editor
+Exec=SciTE
+Icon=Sci48M.png
+Terminal=false
+MultipleArgs=false
+Categories=GNOME;Application;

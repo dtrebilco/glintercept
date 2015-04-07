@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_VIV_SHADER_BINARY
+
+enum Main {
+
+  GL_SHADER_BINARY_VIV       = 0x8FC4,
+
+};
+

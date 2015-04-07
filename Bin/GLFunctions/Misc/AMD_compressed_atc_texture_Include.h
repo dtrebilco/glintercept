@@ -1,0 +1,10 @@
+#define GLI_INCLUDE_GL_AMD_COMPRESSED_ATC_TEXTURE
+
+enum Main {
+
+  GL_ATC_RGB_AMD                           = 0x8C92,
+  GL_ATC_RGBA_EXPLICIT_ALPHA_AMD           = 0x8C93,
+  GL_ATC_RGBA_INTERPOLATED_ALPHA_AMD       = 0x87EE,
+
+};
+

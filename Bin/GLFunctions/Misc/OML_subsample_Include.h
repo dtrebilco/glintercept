@@ -1,0 +1,9 @@
+#define GLI_INCLUDE_GL_OML_SUBSAMPLE
+
+enum Main {
+
+  GL_FORMAT_SUBSAMPLE_24_24_OML         = 0x8982,
+  GL_FORMAT_SUBSAMPLE_244_244_OML       = 0x8983,
+
+};
+

@@ -1,0 +1,9 @@
+#define GLI_INCLUDE_GL_SGI_TEXTURE_COLOR_TABLE
+
+enum Main {
+
+  GL_TEXTURE_COLOR_TABLE_SGI             = 0x80BC,
+  GL_PROXY_TEXTURE_COLOR_TABLE_SGI       = 0x80BD,
+
+};
+

@@ -1,0 +1,12 @@
+#define GLI_INCLUDE_GL_NV_CONSERVATIVE_RASTER
+
+enum Main {
+
+  GL_CONSERVATIVE_RASTERIZATION_NV             = 0x9346,
+  GL_SUBPIXEL_PRECISION_BIAS_X_BITS_NV         = 0x9347,
+  GL_SUBPIXEL_PRECISION_BIAS_Y_BITS_NV         = 0x9348,
+  GL_MAX_SUBPIXEL_PRECISION_BIAS_BITS_NV       = 0x9349,
+
+};
+
+void glSubpixelPrecisionBiasNV(GLuint xbits, GLuint ybits);

@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_SGIX_CONVOLUTION_ACCURACY
+
+enum Main {
+
+  GL_CONVOLUTION_HINT_SGIX       = 0x8316,
+
+};
+

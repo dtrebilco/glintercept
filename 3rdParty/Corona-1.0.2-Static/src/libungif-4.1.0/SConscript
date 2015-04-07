@@ -1,0 +1,2 @@
+ret = ['dgif_lib.c', 'gif_err.c', 'gifalloc.c']
+Return("ret")

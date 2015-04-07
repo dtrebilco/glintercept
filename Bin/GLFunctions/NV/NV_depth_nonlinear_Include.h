@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_NV_DEPTH_NONLINEAR
+
+enum Main {
+
+  GL_DEPTH_COMPONENT16_NONLINEAR_NV       = 0x8E2C,
+
+};
+

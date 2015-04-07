@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_ATI_TEXT_FRAGMENT_SHADER
+
+enum Main {
+
+  GL_TEXT_FRAGMENT_SHADER_ATI  = 0x8200,
+
+};
+

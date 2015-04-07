@@ -1,0 +1,6 @@
+cd ..
+rm -f scite.tgz
+rm -f scite/bin/*.properties
+tar --create --exclude=*.o --exclude=*.obj --exclude=*.dll --exclude=*.exe --exclude=*.a --exclude=SciTE \
+	scintilla/* scite/* \
+	| gzip -c >scite.tgz

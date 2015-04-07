@@ -1,0 +1,11 @@
+#define GLI_INCLUDE_GL_OES_EGL_IMAGE_EXTERNAL
+
+enum Main {
+
+  GL_TEXTURE_EXTERNAL_OES                   = 0x8D65,
+  GL_TEXTURE_BINDING_EXTERNAL_OES           = 0x8D67,
+  GL_REQUIRED_TEXTURE_IMAGE_UNITS_OES       = 0x8D68,
+  GL_SAMPLER_EXTERNAL_OES                   = 0x8D66,
+
+};
+

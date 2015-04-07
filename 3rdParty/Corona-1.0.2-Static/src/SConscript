@@ -1,0 +1,27 @@
+import os
+from os import path
+
+Import('base_env')
+
+gifdir = 'libungif-4.1.0'
+
+SOURCES = [
+    'Convert.cpp',
+    'Corona.cpp',
+    'Debug.cpp',
+    'DefaultFileSystem.cpp',
+    'MemoryFile.cpp',
+    'OpenBMP.cpp',
+    'OpenGIF.cpp',
+    'OpenJPEG.cpp',
+    'OpenPCX.cpp',
+    'OpenPNG.cpp',
+    'OpenTGA.cpp',
+    'SavePNG.cpp',
+    'SaveTGA.cpp',
+] + map(lambda n: gifdir + '/' + n, SConscript(dirs = gifdir))
+
+env = base_env.Copy()
+env.Append(CPPPATH = gifdir)
+
+env.Library(target = 'corona', source = SOURCES)

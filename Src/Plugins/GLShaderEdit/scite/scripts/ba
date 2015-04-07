@@ -1,0 +1,13 @@
+sci_base=/win/ps
+cd $sci_base/scintilla/gtk
+make $*
+cd $sci_base/scite/gtk
+make $*
+make install $*
+cd $sci_base/scintilla
+. tgzsrc
+cd $sci_base/scite
+. tgzsrc
+cd $sci_base/scite
+. tgzgscite
+

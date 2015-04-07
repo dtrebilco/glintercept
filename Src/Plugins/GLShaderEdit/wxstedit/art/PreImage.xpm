@@ -1,0 +1,29 @@
+/* XPM */
+static char *PreImage_xpm[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 7 1",
+"  c black",
+". c #516F2A",
+"X c #4E4E4E",
+"o c #91B16E",
+"O c gray57",
+"+ c #939393",
+"@ c None",
+/* pixels */
+"@@@@............",
+"@@@@.oooooooooo.",
+"@@@@.oooooooooo.",
+"@@@@.oooooooooo.",
+"@@@@.oooooooooo.",
+"@@@@.oooooooooo.",
+"XXXXXXXXXXXXooo.",
+"XOOOOOOOOOOXooo.",
+"XOOOOOOOOOOXooo.",
+"XOOOOOOOOOOXooo.",
+"XOOOOOOOOOOXooo.",
+"XOOOOOOOOOOX....",
+"XOOOOOOOOOOX@@@@",
+"XOOOOOOOOOOX@@@@",
+"XOOOOOOOOOOX@@@@",
+"XXXXXXXXXXXX@@@@"
+};

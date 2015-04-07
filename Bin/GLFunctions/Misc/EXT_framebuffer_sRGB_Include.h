@@ -1,0 +1,10 @@
+#define GLI_INCLUDE_EXT_FRAMEBUFFER_SRGB
+
+
+enum Main {
+  
+  //GL_FRAMEBUFFER_SRGB_EXT          = 0x8DB9,
+  GL_FRAMEBUFFER_SRGB_CAPABLE_EXT  = 0x8DBA,
+
+};
+

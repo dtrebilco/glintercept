@@ -1,0 +1,39 @@
+-- Where'd the name come from? --
+
+My friend Ben came over and said "You should name something Corona."
+So I did.
+
+
+-- Why another image library?  We already have DevIL, FreeImage,
+   etc... --
+
+I simply wasn't satisifed with the others.  They either had complex
+APIs, weren't portable, didn't support the functionality I wanted, or
+weren't deployed well (i.e. no nice Win32 distribution and GNU
+autoconf/automake install).  Also, Corona was a direct outgrowth of
+Sphere's image loading/saving functionality.  Corona gave me a chance
+to rewrite it, making it clearer, faster, and safer.  At the same
+time, Sphere's binary code size shrunk.
+
+Corona only took about a week's worth of work to create.  The bulk of
+the code was written in two late nights, and the rest has been
+cleaning things up, writing documentation, and testing the decoders.
+
+This library is designed for use within several of my personal
+projects (Sphere, PictureShow, Naikai, Battlements) and the ISU Game
+Developers Club (http://isugamedev.sf.net/).
+
+
+-- Corona loads my image upside down! --
+
+There's a good chance it doesn't.  Corona follows the convention that
+the first row of pixels in the array it gives you is the top row.
+Other graphics packages expect rows from the bottom up.  If your image
+appears upside-down, try using the recently-added FlipImage() function
+provided by Corona.
+
+A similar problem is that discreet's 3ds max outputs texture (uv)
+coordinates upside down with respect to how OpenGL expects them.
+There are two common solutions to this problem.  You can flip the
+images when loading them or modify the texture coordinates so that
+v' = 1 - v.

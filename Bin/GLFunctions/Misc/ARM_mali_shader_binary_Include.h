@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_ARM_MALI_SHADER_BINARY
+
+enum Main {
+
+  GL_MALI_SHADER_BINARY_ARM       = 0x8F60,
+
+};
+

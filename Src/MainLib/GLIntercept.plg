@@ -1,0 +1,165 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GLIntercept - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP16.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /Zi /Od /I "..\..\Include" /I "..\Common" /I "." /D "GLI_BUILD_WINDOWS" /D "_CRTDBG_MAP_ALLOC" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "GLINTERCEPT_EXPORTS" /Fo"..\Intermediate\GLI\Debug/" /Fd"..\Intermediate\GLI\Debug/" /FD /GZ /c 
+"C:\Projects\GLIntercept\Src\MainLib\GLStubs.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\GLStubsWGL.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\GLCore1_1.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\GLCore1_2.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\GLWindows.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\ParameterData.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\EnumData.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\FunctionData.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\FunctionTable.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\BuiltInFunction.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\ExtensionFunction.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptLog.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptLogText.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptLogXML.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\ImageManager.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\ImageSaveManager.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptImage.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptShader.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\ShaderManager.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\ShaderSaveManager.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptFrame.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\DisplayListManager.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\DisplayListSaveManager.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptDisplayList.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptShaderGLSL.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\ShaderGLSLManager.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\ShaderGLSLSaveManager.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptData.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptPluginDLLInstance.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptPluginInstance.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\InterceptPluginManager.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\ConfigData.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\GLContext.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\GLDriver.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\GLIntercept.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\DLLLoader.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\FunctionParser.cpp"
+"C:\Projects\GLIntercept\Src\Common\ConfigParser.cpp"
+"C:\Projects\GLIntercept\Src\Common\ErrorLog.cpp"
+"C:\Projects\GLIntercept\Src\Common\FileUtils.cpp"
+"C:\Projects\GLIntercept\Src\Common\InputUtils.cpp"
+"C:\Projects\GLIntercept\Src\Common\MiscUtils.cpp"
+"C:\Projects\GLIntercept\Src\MainLib\MovieMaker.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP16.tmp" 
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP17.tmp" with contents
+[
+imagehlp.lib Corona_static_vc6.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:yes /pdb:"..\Intermediate\GLI\Debug/OpenGL32.pdb" /debug /machine:I386 /nodefaultlib:"LIBC" /def:".\glIntercept.def" /out:"..\..\Bin\MainLib\OpenGL32.dll" /implib:"..\Intermediate\GLI\Debug/OpenGL32.lib" /pdbtype:sept /libpath:"..\..\Lib" 
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\GLStubs.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\GLStubsWGL.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\GLCore1_1.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\GLCore1_2.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\GLWindows.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ParameterData.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\EnumData.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\FunctionData.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\FunctionTable.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\BuiltInFunction.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ExtensionFunction.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptLog.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptLogText.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptLogXML.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ImageManager.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ImageSaveManager.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptImage.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptShader.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ShaderManager.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ShaderSaveManager.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptFrame.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\DisplayListManager.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\DisplayListSaveManager.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptDisplayList.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptShaderGLSL.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ShaderGLSLManager.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ShaderGLSLSaveManager.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptData.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptPluginDLLInstance.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptPluginInstance.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InterceptPluginManager.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ConfigData.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\GLContext.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\GLDriver.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\GLIntercept.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\DLLLoader.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\FunctionParser.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ConfigParser.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\ErrorLog.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\FileUtils.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\InputUtils.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\MiscUtils.obj
+\Projects\GLIntercept\Src\Intermediate\GLI\Debug\MovieMaker.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP17.tmp"
+<h3>Output Window</h3>
+Compiling...
+GLStubs.cpp
+GLStubsWGL.cpp
+GLCore1_1.cpp
+GLCore1_2.cpp
+GLWindows.cpp
+ParameterData.cpp
+EnumData.cpp
+FunctionData.cpp
+FunctionTable.cpp
+BuiltInFunction.cpp
+ExtensionFunction.cpp
+InterceptLog.cpp
+InterceptLogText.cpp
+InterceptLogXML.cpp
+ImageManager.cpp
+ImageSaveManager.cpp
+InterceptImage.cpp
+InterceptShader.cpp
+ShaderManager.cpp
+ShaderSaveManager.cpp
+Generating Code...
+Compiling...
+InterceptFrame.cpp
+DisplayListManager.cpp
+DisplayListSaveManager.cpp
+InterceptDisplayList.cpp
+InterceptShaderGLSL.cpp
+ShaderGLSLManager.cpp
+ShaderGLSLSaveManager.cpp
+InterceptData.cpp
+InterceptPluginDLLInstance.cpp
+InterceptPluginInstance.cpp
+InterceptPluginManager.cpp
+ConfigData.cpp
+GLContext.cpp
+GLDriver.cpp
+GLIntercept.cpp
+DLLLoader.cpp
+FunctionParser.cpp
+ConfigParser.cpp
+ErrorLog.cpp
+FileUtils.cpp
+Generating Code...
+Compiling...
+InputUtils.cpp
+MiscUtils.cpp
+MovieMaker.cpp
+Generating Code...
+Linking...
+   Creating library ..\Intermediate\GLI\Debug/OpenGL32.lib and object ..\Intermediate\GLI\Debug/OpenGL32.exp
+LINK : warning LNK4098: defaultlib "LIBCMT" conflicts with use of other libs; use /NODEFAULTLIB:library
+
+
+
+<h3>Results</h3>
+OpenGL32.dll - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

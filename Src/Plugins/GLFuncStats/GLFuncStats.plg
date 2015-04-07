@@ -1,0 +1,48 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GLFuncStats - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP2E4.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "." /I "..\..\Common" /D "_DEBUG" /D "GLI_BUILD_WINDOWS" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "GLFuncStats_EXPORTS" /Fo"..\..\Intermediate\Plugins\GLFuncStats\Debug/" /Fd"..\..\Intermediate\Plugins\GLFuncStats\Debug/" /FD /GZ /c 
+"C:\Projects\GLIntercept\Src\Common\ConfigParser.cpp"
+"C:\Projects\GLIntercept\Src\Plugins\GLFuncStats\FuncStatsPlugin.cpp"
+"C:\Projects\GLIntercept\Src\Plugins\GLFuncStats\GLFuncStats.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP2E4.tmp" 
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP2E5.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:yes /pdb:"..\..\Intermediate\Plugins\GLFuncStats\Debug/GLFuncStats.pdb" /debug /machine:I386 /def:".\GLFuncStats.def" /out:"..\..\Intermediate\Plugins\GLFuncStats\Debug/GLFuncStats.dll" /implib:"..\..\Intermediate\Plugins\GLFuncStats\Debug/GLFuncStats.lib" /pdbtype:sept 
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLFuncStats\Debug\ConfigParser.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLFuncStats\Debug\FuncStatsPlugin.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLFuncStats\Debug\GLFuncStats.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP2E5.tmp"
+<h3>Output Window</h3>
+Compiling...
+ConfigParser.cpp
+FuncStatsPlugin.cpp
+GLFuncStats.cpp
+Generating Code...
+Linking...
+   Creating library ..\..\Intermediate\Plugins\GLFuncStats\Debug/GLFuncStats.lib and object ..\..\Intermediate\Plugins\GLFuncStats\Debug/GLFuncStats.exp
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP2E9.bat" with contents
+[
+@echo off
+copy .\..\..\Intermediate\Plugins\GLFuncStats\Debug\GLFuncStats.dll ..\..\..\Bin\Plugins\GLFuncStats\GLFuncStats.dll
+]
+Creating command line "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP2E9.bat"
+
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+GLFuncStats.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

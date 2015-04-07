@@ -1,0 +1,9 @@
+#define GLI_INCLUDE_GL_ANGLE_TEXTURE_USAGE
+
+enum Main {
+
+  GL_TEXTURE_USAGE_ANGLE                = 0x93A2,
+  GL_FRAMEBUFFER_ATTACHMENT_ANGLE       = 0x93A3,
+
+};
+

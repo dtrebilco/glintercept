@@ -1,0 +1,37 @@
+Bump the Version Number
+
+    The following files contain version information:
+        configure.in
+        full-release.sh
+        make-release-win32.sh
+        doc/doxygen/corona.doxy
+        doc/doxygen/mainpage.doxy
+        doc/doxygen/docify.sh
+        src/corona.h
+        src/Corona.cpp
+        vc7/ManagedWrapper.cpp
+
+
+Run the test suite!!
+
+
+Build the VC6 Binary Release
+Build the VC7 Binary Release
+Build the automake dist Release
+Build Source Release
+Generate Documentation
+    Run full-release.sh
+
+
+Upload files to SourceForge
+Add doxygen stuff to Corona web space.
+
+
+Announce Release
+
+    1) Update web site with release notes, changelog, and new links.
+    2) Send out release announcement to corona-annc mailing list.
+    3) Add news to corona project on SourceForge.
+
+
+Update changelog to include release date.

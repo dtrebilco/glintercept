@@ -1,0 +1,130 @@
+ProfileName = "Development Standard";
+ProfileDescription = "Standard development options - XML Frame Grab + Shader editor + Free Camera";
+FunctionLog;
+{
+  LogEnabled = True;
+  LogFlush = False;
+  LogFileName = gliInterceptLog;
+  LogFormat = XML;
+  XMLFormat;
+  {
+    XSLFile = gliIntercept_DHTML2.xsl;
+    BaseDir = %InstallPath%\XSL;
+  }
+}
+LogPerFrame;
+{
+  Enabled = True;
+  FrameStartKeys = (ctrl,shift,f);
+  OneFrameOnly = True;
+}
+InputFiles;
+{
+  GLFunctionDefines = %InstallPath%\GLFunctions\gliIncludes.h;
+}
+ErrorChecking;
+{
+  GLErrorChecking = True;
+  ThreadChecking = False;
+  BreakOnError = True;
+  LogOnError = True;
+  ExtendedErrorLog = False;
+  DebuggerErrorLog = True;
+}
+ImageLog;
+{
+  LogEnabled = True;
+  RenderCallStateLog = True;
+  SaveFormats = PNG;
+  FlipXAxis = False;
+  TileCubeMaps = True;
+  SaveGLTypes = (1D,2D,3D,CUBE);
+  SavePbufferTex = True;
+  ImageIcon;
+  {
+    Enabled = True;
+    SaveFormat = JPG;
+    Size = 40;
+  }
+}
+ShaderLog;
+{
+  LogEnabled = True;
+  RenderCallStateLog = True;
+  AttachLogState = True;
+  ValidatePreRender = False;
+  UniformLogPreRender = False;
+}
+DisplayListLog;
+{
+  LogEnabled = True;
+}
+FrameLog;
+{
+  LogEnabled = True;
+  SaveFormat = JPG;
+  ColorBufferLog = (pre,post,diff);
+  StencilColors = (0,0xFF000000,1,0xFFFF0000,2,0xFFFFFF00,3,0xFF0000FF,4,0xFF00FFFF,5,0xFFFF00FF,6,0xFF80FFFF,7,0xFFFFFFFF);
+  FrameIcon;
+  {
+    Enabled = True;
+    SaveFormat = JPG;
+    Size = 40;
+  }
+  FrameMovie;
+  {
+    Enabled = False;
+    Size = (640,480);
+    FrameRate = 15;
+    Compression = (mpg4,divx,none);
+  }
+}
+TimerLog;
+{
+  LogEnabled = False;
+  LogCutoff = 20;
+}
+PluginData;
+{
+  BaseDir = %InstallPath%\Plugins;
+  Plugins;
+  {
+    OpenGLFreeCamera = GLFreeCam/GLFreeCam.dll;
+    {
+      EnableKeys = (ctrl,shift,c);
+      ResetPositionKeys = p;
+      ResetOrientationKeys = o;
+      DisableFaceCullKeys = (ctrl,shift,u);
+      EnableWireFrameKeys = (ctrl,shift,w);
+      RenderViewFrustumKeys = (ctrl,shift,v);
+      CameraInputLock = False;
+      CameraMoveSpeed = 10.000000;
+      CameraRotateSpeed = 2.000000;
+      CameraMoveModifierKey = shift;
+      CameraMoveModifierValue = 10.000000;
+      AdjustScissor = False;
+      IgnoreOrthographic = True;
+      MainContextOnly = False;
+      AdjustGLLighting = True;
+      ForceAdjustGLLighting = False;
+      RenderViewFrustumColor = white;
+      CameraKeys;
+      {
+        Forward = i;
+        Backward = k;
+        StrafeLeft = j;
+        StrafeRight = l;
+        PitchUp = num8;
+        PitchDown = num2;
+        YawLeft = num4;
+        YawRight = num6;
+        RollLeft = num7;
+        RollRight = num9;
+      }
+    }
+    OpenGLShaderEdit = GLShaderEdit/GLShaderEdit.dll;
+    {
+      ShaderEditorKeys = (ctrl,shift,s);
+    }
+  }
+}

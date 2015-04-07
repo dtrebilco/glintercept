@@ -1,0 +1,51 @@
+Corona Coding Guidelines:
+
+Syntax:
+  - Keep lines under eighty characters.
+
+  - Pretty straightforward...  just try to write clear code and
+    follow the rest of the library's style.
+
+Semantics:
+  - When you write or read data to or from a file, don't read one byte
+    at a time.  Read as large of a buffer as you can, and then process
+    the data in memory.  Remember:  Each read operation is a virtual
+    function *and* a system call.
+
+  - Write your code to be independent of endianness.  For example,
+    don't write something like the following code.
+
+    struct header {
+      int size;
+      int width;
+      int height;
+      ...
+    };
+
+    header h;
+    file->read(&h, sizeof(h));
+
+    This code will only work if sizeof(int) is whatever the size of
+    the value in the actual header on disk is.  Also, it will only
+    work if the int is packed in the same endianness as the host
+    platform.  It is much safer to read a fixed-size array of bytes
+    and manually (explicitly, if you will) unpack the members.  For
+    example...
+
+    typedef unsigned char byte;
+
+    // read 16-bit little-endian
+    inline int read16(byte* c) {
+      return c[0] + (c[1] << 8);
+    }
+
+    // read 32-bit little-endian
+    inline int read32(byte* c) {
+      return read16(c) + (read16(c + 2) << 16);
+    } 
+
+    byte header[256];
+    file->read(header, 256);
+    int size   = read32(header);
+    int width  = read32(header + 4);
+    int height = read32(header + 8);

@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_QCOM_PERFMON_GLOBAL_MODE
+
+enum Main {
+
+  GL_PERFMON_GLOBAL_MODE_QCOM       = 0x8FA0,
+
+};
+

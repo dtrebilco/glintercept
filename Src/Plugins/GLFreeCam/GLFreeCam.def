@@ -1,0 +1,6 @@
+LIBRARY GLFreeCam.dll
+EXPORTS
+   GetFunctionLogPluginVersion
+   CreateFunctionLogPlugin
+   RegisterDLLEventHandler
+   UnRegisterDLLEventHandler

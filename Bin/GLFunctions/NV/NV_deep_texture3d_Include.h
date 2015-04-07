@@ -1,0 +1,9 @@
+#define GLI_INCLUDE_GL_NV_DEEP_TEXTURE3D
+
+enum Main {
+
+  GL_MAX_DEEP_3D_TEXTURE_WIDTH_HEIGHT_NV       = 0x90D0,
+  GL_MAX_DEEP_3D_TEXTURE_DEPTH_NV              = 0x90D1,
+
+};
+

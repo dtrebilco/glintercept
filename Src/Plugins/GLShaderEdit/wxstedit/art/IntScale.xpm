@@ -1,0 +1,26 @@
+/* XPM */
+static char *IntScale_xpm[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 4 1",
+"  c black",
+". c #040000",
+"X c #4B9B99",
+"o c None",
+/* pixels */
+"oXoooXXXoooooooo",
+"XXoooXoXoooooooo",
+"oXoooXoXoooooooo",
+"oXoooXoXoooooooo",
+"oXoXoXXXoooooooo",
+"oooooooooooooooo",
+"ooooooooo.oooooo",
+"oooooooooooooooo",
+"ooooooooooo.oooo",
+"oooooooooooooooo",
+"ooooo   oo  oo  ",
+"ooooo o o  oo  o",
+"ooooooo o   o   ",
+"oooooo  ooo ooo ",
+"ooooo  oo o o o ",
+"ooooo   o   o   "
+};

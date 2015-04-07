@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C++ Express 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoronaStatic", "corona\CoronaStatic.vcproj", "{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "corona", "corona\corona.vcproj", "{6A4E2903-D9AE-4CCE-A6BA-2B503D711B41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Debug|Win32.Build.0 = Debug|Win32
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Release|Win32.ActiveCfg = Release|Win32
+		{2F87E8F3-B5A3-4550-8B8B-BA1B867F393C}.Release|Win32.Build.0 = Release|Win32
+		{6A4E2903-D9AE-4CCE-A6BA-2B503D711B41}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6A4E2903-D9AE-4CCE-A6BA-2B503D711B41}.Debug|Win32.Build.0 = Debug|Win32
+		{6A4E2903-D9AE-4CCE-A6BA-2B503D711B41}.Release|Win32.ActiveCfg = Release|Win32
+		{6A4E2903-D9AE-4CCE-A6BA-2B503D711B41}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,2 @@
+If you run "doxygen doxygen.cfg" in the "docs" directory the output of
+doxygen will be generated here.

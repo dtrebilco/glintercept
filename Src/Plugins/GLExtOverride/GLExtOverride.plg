@@ -1,0 +1,39 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GLExtOverride - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP3DD.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "." /I "..\..\Common" /D "NDEBUG" /D "GLI_BUILD_WINDOWS" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "GLEXTOVERRIDE_EXPORTS" /Fo"..\..\Intermediate\Plugins\GLExtOverride\Release/" /Fd"..\..\Intermediate\Plugins\GLExtOverride\Release/" /FD /c 
+"C:\Projects\GLIntercept\Src\Plugins\GLExtOverride\GLExtOverride.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP3DD.tmp" 
+Creating temporary file "C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP3DE.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"..\..\Intermediate\Plugins\GLExtOverride\Release/GLExtOverride.pdb" /machine:I386 /def:".\GLExtOverride.def" /out:"..\..\Intermediate\Plugins\GLExtOverride\Release/GLExtOverride.dll" /implib:"..\..\Intermediate\Plugins\GLExtOverride\Release/GLExtOverride.lib" 
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLExtOverride\Release\ConfigParser.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLExtOverride\Release\ExtensionOverride.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLExtOverride\Release\GLExtOverride.obj
+\Projects\GLIntercept\Src\Intermediate\Plugins\GLExtOverride\Release\FileUtils.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\DAMIAN~1\LOCALS~1\Temp\RSP3DE.tmp"
+<h3>Output Window</h3>
+Compiling...
+GLExtOverride.cpp
+Linking...
+   Creating library ..\..\Intermediate\Plugins\GLExtOverride\Release/GLExtOverride.lib and object ..\..\Intermediate\Plugins\GLExtOverride\Release/GLExtOverride.exp
+FileUtils.obj : error LNK2001: unresolved external symbol __imp__MakeSureDirectoryPathExists@4
+..\..\Intermediate\Plugins\GLExtOverride\Release/GLExtOverride.dll : fatal error LNK1120: 1 unresolved externals
+Error executing link.exe.
+
+
+
+<h3>Results</h3>
+GLExtOverride.dll - 2 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

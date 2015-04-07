@@ -1,0 +1,101 @@
+===============================================================================
+- What's new -
+===============================================================================
+
+Version 1.3.2 
+-------------------------------------------------------------------------------
+- Added latest OpenGL extensions and 4.5 fixups
+- Tweaked .hta XML view file to work better on latest explorer
+
+Version 1.3.1 
+-------------------------------------------------------------------------------
+- Added OpenGL 4.5 entry points + new Nvidia extensions
+
+Version 1.3.0 
+-------------------------------------------------------------------------------
+- Added OpenGL 4.4 entry points
+
+- Add all extensions from OpenGL XML registery and resolved differences (svn 27108)
+
+- Added support for contexts created by WGL ARB extension method
+
+Version 1.2.0 
+-------------------------------------------------------------------------------
+- Added OpenGL 4.3 entry points
+
+- Added support for running with OpenGL 1.1 context (software rendering on windows)
+
+- Added extensions matching GL-XML Specs 4.3.6
+
+- Updated debug context plugin to enable support for KHR_debug/OGL 4.3 debugging
+
+Version 1.1.0 
+-------------------------------------------------------------------------------
+- Fixed some OpenGL 3.0 core context problems with using deprecated enums
+
+- Add forcing a debug context and logging results of GL_ARB_debug_output
+  via GLDebugContext plugin
+
+Version 1.0.2 
+-------------------------------------------------------------------------------
+- Updated function parser to catch white space mistakes
+
+- Add NV_path_rendering - required new interface to manually handle function 
+  that return floats (glGetPathLengthNV)
+
+Version 1.0.1 
+-------------------------------------------------------------------------------
+- Fixed issue where GL errors were generated from the image logging system
+  in a pure OpenGL3.0+ context
+
+Version 1.0 
+-------------------------------------------------------------------------------
+ - Added logging for lots more OpenGL entry points
+
+ - Fixed startup bug with GLIntercept made OpenGL calls being logged
+
+ - Fixed XML nested OpenGL calls issue (was broken in GLIntercept 0.42)
+
+ - Update Display List logging to handle WGL/GLX font creation
+
+ - Added geometry shader support
+
+ - Shader editor supports multiple shaders of the same type in one program 
+
+ - Shader editor no longer causes errors with inserting #line when #version is used in the shader
+
+ - Added unsigned integer shader semantic support to loggers and shader editor
+
+ - Add x64 support (thanks to Kamil Patelczyk of Intel for initial code) 
+
+ - Worked around Nvidia multi-thread driver issue (no longer logging calls to wglGetPixelFormat)
+
+ - Fixed some issues when using the image/frame logger and using a "core" OpenGL context.
+
+Version 0.5 
+-------------------------------------------------------------------------------
+ - Updated GLSL and other logging interfaces to accept OpenGL 2.0 interfaces.
+
+ - Added workaround to ATI issues in the GLSL shader editor.
+
+ - Added "Break on shader usage" to the shader editor.
+   (Handly for finding where a shader is being used in code)
+
+ - Added .hta "Application" in log output so IE users can view logs without 
+   security warnings.
+
+ - Added GL_GREMEDY_string_marker to the extension override plugin.
+
+ - Added support for multiple draw buffers to the frame logger. 
+
+ - Added support for frame buffer objects to the texture logger.
+
+ - Added support for pixel buffer objects to the texture and frame logger.
+
+ - Re-wrote low level interaction code to work on Linux. 
+   Main .dll/.so now compiles and works in Linux.
+
+ - Fixed some minor logging/frame dumping issues.
+
+
+

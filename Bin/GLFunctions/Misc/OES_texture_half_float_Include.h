@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_OES_TEXTURE_HALF_FLOAT
+
+enum Main {
+
+  GL_HALF_FLOAT_OES       = 0x8D61,
+
+};
+

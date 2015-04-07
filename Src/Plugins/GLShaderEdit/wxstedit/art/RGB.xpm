@@ -1,0 +1,26 @@
+/* XPM */
+static char *RGB_xpm[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 4 1",
+"  c blue",
+". c #00AF00",
+"X c None",
+"o c #CF0000",
+/* pixels */
+"XXXXXXXXXXXXXXXX",
+"XXXXX.....XXXXXX",
+"XXXX...X...XXXXX",
+"XXXX...X...XXXXX",
+"XXXX...XXXXXXXXX",
+"XXXX...XXXXXXXXX",
+"Xoooooo....   XX",
+"Xooo.ooo...X   X",
+"Xooo.ooo...X   X",
+"XoooXooo...X   X",
+"XooooooX      XX",
+"XooooooX   X   X",
+"XoooXooo   X   X",
+"XoooXooo   X   X",
+"XoooXooo      XX",
+"XXXXXXXXXXXXXXXX"
+};

@@ -1,0 +1,294 @@
+===============================================================================
+Changelog:
+
+04/16/2006
+    Add autocompletion for any word in the document in addition to the keywords
+    Fix compilation for DLL lib, wxSTC doesn't export Scintilla's SString class
+
+04/13/2006
+    Don't allow loading the same file twice from disk in the notebook.
+    Don't popup the save file as dialog unless they haven't previously
+       loaded or saved the file to disk.
+
+04/05/2006
+    Fixed loaded/saving files when compiled in unicode. (Thanks Troels K)
+    Removed old classname typedefs
+    STE_BOOKMARK_MARKER -> STE_MARKER_BOOKMARK for consistency
+    Added ID_STE_COPY_PRIMARY to copy to primary selection in unix systems
+    Added ID_STE_PASTE_RECT to paste rectangular selections
+    Removed old wxStyledTextCtrl_LoadFile, using streams now
+    Fix find/replace in notebook not switching pages sometimes
+
+11/20/05
+    Moved the static functions for prepending strings to wxArrayString and
+        wxComboBox out of classes as standalone functions, wxSTEPrependXXX.
+    Allow only showing the styles used for any particular language in pref dlg.
+
+10/30/05
+    Finally renamed the classes from StyledTextEditorXXX to wxSTEditXXX.
+    A simple find and replace should suffice.
+    If you want to avoid doing the rename now you can pass
+        STE_USE_OLD_CLASSNAMES=1 into your Makefile.
+
+09/01/05
+    Added preliminary autocompletion code
+    Allow customizing the find/replace as wxWidgets does
+
+08/24/05
+    Fixed memory leak with refed documents
+    Added splitter buttons above and to the side of the scrollbars for the
+      StyledTextSplitter, optional.
+    Test the width of the visible text and adjust scrollbars when user scrolls
+      all the way to the right if the text won't be shown.
+    Regex now works in the find/replace dialog and all find/replace functions.
+    Changed FindAllStrings to return # found and you can pass in wxArrayInts
+      to get the start and end positions.
+
+08/21/05
+    Changed the Save/LoadConfig for the different classes that have it to take
+      only one path. The paths are now stored in the StyledTextEditorOptions,
+      which you can change there.
+    Added bool StyledTextEditor::LoadInputStream (from Troels Knakkergaard)
+      to load from an inputstream and if the file is unicode, ask if it should
+      be loaded that way or just raw ascii.
+
+08/15/05
+    Redid the language pref dialog page
+    Added user set file patterns, styles, additional keywords
+    Added pref to enable/disable dclick adding bookmark
+    Use size_t for all items indexing into arrays and array sizes
+
+08/13/05
+    * Printing now fully works in MSW. (Thanks to Deepak)
+    Added option to print linenumbers or not.
+    Fixed some of the menu item accelerators to match typical programs
+    Removed redundant tooltips that don't explain anymore than the static text.
+    Fixed config saving for markers and indicators
+    Added ability to remove styles
+
+08/11/05
+    * Changed colours from BBGGRR to RRGGBB, use old method by setting in
+        stestyls.h #define STE_COLOURS_BBGGRR 1
+    * Changed FindString to take start_pos and end_pos so that you can find
+        within a range. (eventually find in selection will be added)
+    Changed StyledTextEditorPrefs::Get/SetPref to return/take wxStrings
+       use Get/SetPrefInt for int values.
+    Use wxHTMLEasyPrinting for printing now... at least for now.
+    Cleanup for Find code.
+
+08/01/05
+    Added columnize function, dialog, and menu item
+    Styles in config are found by name not number
+    Styles are mapped do that you can have 10000 generic styles
+    STE_STYLE_TEXT is now STE_STYLE_DEFAULT
+    Added TranslatePos/Lines to aid in calculating valid input to functions
+    STEMenuManager uses separate masks for each File, Edit, etc menu
+    Quit on frame now called Exit like everyone else
+    Added event for double click on margin
+
+07/20/05
+    Rewrote the languages adding the rest of the words, updated to scite 1.64
+
+06/05/05
+    Redid the prefs dialog by making them more modular and complete. The main
+    prefs page is now split up into a few separate pages.
+
+    Updated the language dialog to show the styles used in an editor instead
+    of using a listbox. I think this makes this much clearer.
+
+    Fixed a bug in the frame's splitter where the wrong window would get hidden.
+
+03/30/05
+    Lots of little changes, broke the files into a single file per class.
+    Fixed some minor find/replace bugs
+    Fixed notebook sort flickering when two pages have the same name
+    Added InsertText dialog to easily prepend, append, insert at col, and
+    surround the selection with text.
+
+    Updated the Languages to wxWidgets 2.5.4 so you may have to copy
+    include/stedit/setup0.h to setup.h. Excluding different languages is still
+    unused though and I'm starting to think that the way to go is to write an
+    XML file rather than hardcoding it in C.
+
+    Rename StyledTextFrame/Notebook::GetSplitter to GetEditorSplitter
+    Rename StyledTextFrame::GetNotebook to GetEditorNotebook
+
+    Move enum StyledTextEditor::marginNumber/Marker/Fold to
+        enum STE_MARGIN_NUMBER/MARKER/FOLD
+    Move enum StyledTextEditor::bookmarkMarker to
+        enum STE_BOOKMARK_MARKER
+
+07/25/04
+    Put all the popup menus for the notebook, splitter, and editor into the
+    StyledTextEditorOptions. A big change, but now anyone can update the
+    state of the menus through the options. There was also probably not much
+    sense having each editor sharing the same options create their own popup,
+    so this'll cut down on mem usage and speed up editor creation a bit.
+
+    Removed all CreatePopupMenu functions for the editor, splitter, notebook
+    since all they did was call the StyledTextEditorMenuManager code.
+
+    Removed all the UpdateMenu/Tool functions in favor of a single UpdateItems
+    and UpdateAllItems, where UpdateItems takes menu, menubar, toolbar
+    (any can be NULL) and UpdateAllItems automatically updates everything.
+
+    Removed the temporary StyledTextEditorMenuOptions to make the
+    StyledTextEditorMenuManager store the three ints of what menus to create.
+
+    Removed some of the prefs bloat by initializing the default values using
+    member functions. Use const char and not wxChar for the lexer words since
+    even in Unicode we don't want to translate them nor will they be multibyte.
+
+    The Shutdown() function that stopped sending the StyledTextEditorEvents is
+    now called SendSTEEvents(bool send) so you can turn them on or off. It
+    still serves the same purpose of allowing you to not propagate a focus event
+    just before being deleted and crashing, but has a more descriptive name.
+
+07/22/04
+    Removed StyledTextEditorNumberDialog, using the wxNumberEntryDialog instead
+    for both 2.4.x and >= 2.5.x. In 2.4.x the wxNumberEntryDialog is
+    private in src/generic/numdlgg.cpp it's declaration is copied in stedit.cpp.
+
+03/22/04
+    Added StyledTextEditorFindReplaceData::Load/SaveConfig, for flags.
+
+    Added prefs/styles/langs into the StyledTextEditorOptions so that
+    it's simplier to create exactly what you want and have it passed to
+    children. Got rid of STE_USE_GLOBAL_PREFS/STYLES/LANGS since they're
+    passed through the options now.
+
+    Added StyledTextMenuManager into the options and made virtual functions
+    for creating all the menus for the different windows. Again, this is
+    far more flexible and you can subclass the menu manager and use your
+    own for complete control.
+
+    Removed the delayed update event since the problem was in the Scintilla
+    drawing code and not the updateui code.
+
+    Added popupmenu, menubar, toolbar methods to the notebook so that it now
+    updates them on the fly. Before the frame struggled to do it for you.
+
+    Redid the menubar and toolbar creation for the frame since it now uses the
+    menumanager from the options (if any).
+
+    Fixed assorted find/replace bugs, better check to see if we really can't
+    find or replace.
+
+03/20/04
+    Removed the StyledTextEditorOptions from the constructor for the
+    StyledTextFrame. You must create a frame in two steps now.
+    StyledTextFrame *f = new StyledTextFrame(....); f->CreateOptions(options);
+    I didn't realize how sensitive MSVS was to calling virtual functions
+    in the constructor or even from an event from the constructor. GCC doesn't
+    seem to care.
+    Removed EVT_STF_CREATED since it's useless in light of the above.
+
+    Changed the StyledTextEditorOptions to be ref counted and also contain the
+    default filename/path/extensions. I want to create editors that will load
+    different file types etc so the previous static method didn't cut it. The
+    options are ref counted so that all items sharing the options are updated.
+
+    Fixed severe find/replace bug, why didn't it show up in GTK?
+
+    Added code for menus item creation in menu manager for the frame's menubar.
+
+    Added notebook option for allowing no pages. It's really a lot of work to
+    disable all the appropriate menu items, but you can do it if you want.
+
+03/19/04
+    Fix bug in wxSTC file loading for unicode. Should be fixed in wxWidgets CVS
+    soon enough, but must wait until 2.4.3. Using internal
+    wxStyledTextCtrl_LoadFile for now.
+
+    Renamed CopyForRefedEditor to just RefEditor since that's what it does. It
+    also now calls AddRefDocument & SetDocPointer for you, it should have been
+    that way before. To ref another editor, just call editor->RefEditor(other).
+
+    Got rid of using EVT_WINDOW_CREATE to send EVT_ST(X)_CREATED since in MSW
+    it comes way too early, it worked well in GTK though.
+
+    MSVS project file update for 2.4 and 2.5.
+
+    Save last opened dir in wxConfig, print the location of the config file in
+    the About dialog if wxConfigBase::Get(FALSE) is a wxFileConfig.
+
+    *** Bug FIX ***
+    There is a bug in scintilla that can be duplicated in SciTE when you have
+    SC_CACHE_PAGE set, the default SC_CACHE_CARET does not lead to that error.
+    Maybe the whole UpdateUI stuff was just a wild goose chase? Though maybe it
+    does make sense to not try to hilight the brackets during an OnPaint.
+    see StyledTextEditor::Create for the valgrind output.
+    ***
+
+03/13/04
+    Made a single wxEVT_STE_STATE_CHANGED event and added StyledTextEditorEvent.
+    This replaces all the EVT_STE_CANCOPY... events. It uses an enum
+    STE_StateType to really simplify the whole updating mechanism. The event
+    also has a HasStateChanged and GetStateValue functions to make this a much
+    nicer way than all the different events. The event contains the whole state
+    as a single int.
+
+    The StyledTextEditorPrefs/Styles/Langs are now used as fully ref counted
+    objects. Previously they were pointers in StyledTextEditor so that if they
+    were NULL it meant don't use. Now, if they're !Ok() then don't use. You
+    treat them exactly like a wxBitmap for example. Added
+    NullStyledTextEditorPrefs/Styles/Langs to use like wxNullBitmap.
+
+    Moved the lettercase into the font styles for StyledTextEditorStyles. Makes
+    parsing the style line a little faster since it's smaller.
+
+    Moved the creation code back into the Create function and out of the
+    EVT_SCX_CREATED event handler. This was doing strange things occasionally
+    and so some of the functions had to become non virtual.
+
+    Bug Fixes:
+
+    *** Not really sure of this? ***
+    Fixed crashing in GTK from Scintilla sending an UpdateUI event in the
+    middle of a wxPaintEvent. Used to do DoBraceMatch then, but we were already
+    painting and then Scintilla would try to delete an invalid text renderer
+    element. Uses a delayed event system where AddPendingEvent is used to send a
+    fake EVT_BUTTON until we're finally out of OnPaint. Only then call
+    DoBraceMatch and check if the state (CanCut...) has changed and send event.
+
+12/22/03 -
+    *** wxstedit program ***
+    If you used an earlier version you will get an error for loading the
+    preferences at startup since the format has changed.
+    You may answer Yes to fix the preferences or just delete the preference
+    file called wxStEdit.ini in MSW or ~/.wxStEdit in *nix.
+
+    -Cleanup, more docs in the headers.
+    -All the Find/Replace buttons really work now, removed "Find All" added
+     seach in all docs for notebook.
+    -StyledTextEditorPrefs saves values as int even if the option is basicly
+     a bool, for example WRAPMODE has only two states wxSTC_WRAP_NONE and
+     wxSTC_WRAP_WORD. If the wxSTC function takes a bool the pref is bool,
+     else int.
+    -Added pref for showing marker margin, but no gui element to show it.
+    -The styles are stored in a wxArrayString, should be a little smaller than
+     the hashmap and speed shouldn't be a problem.
+    -Added styles for indicators and some functions to easily add them.
+    -All data used with the StyledTextEditor is in the ref counted
+     StyledTextEditorData so that refing editors really do share the same data.
+    -Removed all static variables from the header, use static members of
+     StyledTextEditor to get them
+    -Added StyledTextEditorOptions class to hold the options for the
+     frame, notebook, splitter, editor, and menus
+    -Added StyledTextEditorMenuManager to create all the menus. Makes the
+     editor class quite a lot smaller and easier to look through.
+    -Preference dialog uses pages of StyledTextEditorPrefDialogPageBase to
+     make the dialog class smaller since it only calls two virtual functions.
+    -Added Print options dialog and removed print magnification dialog.
+
+    Bug Fixes:
+
+    -Removed Menu item Edit->Clear with DEL key accelerator. MSW stole the key
+     and though this could simply be implemented, but there's not much point in
+     having a "Clear" item since everyone knows what DEL will do.
+    -Print preview correctly displays with any scaling
+    -Show dialog to "Save File As" if filename isn't valid or if the file wasn't
+     loaded from disk in the first place.
+
+12/06/03 -
+    Initial release.

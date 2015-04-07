@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_NV_FILL_RECTANGLE
+
+enum Main {
+
+  GL_FILL_RECTANGLE_NV       = 0x933C,
+
+};
+
