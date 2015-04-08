@@ -1,7 +1,7 @@
 # GLIntercept
 
 ##About##
-GLIntercept is a OpenGL function call interceptor for Windows that will intercept and log *all* [OpenGL](http://www.opengl.org) calls. 
+GLIntercept is a OpenGL function call interceptor for Windows that will intercept and log **all** [OpenGL](http://www.opengl.org) calls. 
 
 ##Basic usage##
 Select the version of GLIntercept right for the application being debugged (x86 or x64) - *Note* you select the version of GLIntercept based on if the _application_ is x86 or x64 (64bit) - not if the operating system is 64 bit.
@@ -50,22 +50,22 @@ Main GLIntercept features:
 ##Links##
 Similar OpenGL tools to GLIntercept are:
 
-    * [RenderDoc](https://github.com/baldurk/renderdoc)
-    * [Intel GPA](https://software.intel.com/en-us/gpa)
-    * [APITrace](https://github.com/apitrace/apitrace)
-    * [GLSLDevil](http://www.vis.uni-stuttgart.de/glsldevil/index.html)
-    * [gDEBugger](http://www.gremedy.com/)
-    * [BuGLe](http://sourceforge.net/projects/bugle/)
-    * [AMD GPU PerfStudio](http://developer.amd.com/gpu/PerfStudio/Pages/default.aspx)
-    * [OpenGLXtractor (GLIntercept 0.5 with GUI)](http://members.chello.at/alexan/)
+* [RenderDoc](https://github.com/baldurk/renderdoc)
+* [Intel GPA](https://software.intel.com/en-us/gpa)
+* [APITrace](https://github.com/apitrace/apitrace)
+* [GLSLDevil](http://www.vis.uni-stuttgart.de/glsldevil/index.html)
+* [gDEBugger](http://www.gremedy.com/)
+* [BuGLe](http://sourceforge.net/projects/bugle/)
+* [AMD GPU PerfStudio](http://developer.amd.com/gpu/PerfStudio/Pages/default.aspx)
+* [OpenGLXtractor (GLIntercept 0.5 with GUI)](http://members.chello.at/alexan/)
 
 OpenGL ES / OpenVG tracing
-    * [tracy](https://gitorious.org/tracy) 
+* [tracy](https://gitorious.org/tracy) 
 
 Direct3D
-    * [Visual Studio Graphics Diagnostics tools](https://msdn.microsoft.com/en-us/library/vstudio/hh315751(v=vs.120).aspx)
-    * PIX (part of DirectX SDK)
-    * [3DRipperDX](http://www.deep-shadows.com/hax/3DRipperDX.htm)
+* [Visual Studio Graphics Diagnostics tools](https://msdn.microsoft.com/en-us/library/vstudio/hh315751(v=vs.120).aspx)
+* PIX (part of DirectX SDK)
+* [3DRipperDX](http://www.deep-shadows.com/hax/3DRipperDX.htm)
 
 
 
