@@ -31,19 +31,19 @@ GLIntercept has existed since 2003 and was mainly designed as an OpenGL 1.0-2.1 
 ##Features##
 Main GLIntercept features:
 
-* Save all OpenGL function calls to text or [http://code.google.com/p/glintercept/wiki/Screenshots XML format] with the option to log individual frames.
-* Activate and log ARB_debug_output/GL_KHR_debug messages to the [http://code.google.com/p/glintercept/wiki/Screenshots log]
-* Run time [http://code.google.com/p/glintercept/wiki/Screenshots shader edit]. Display shader usage and edit the shaders at run time. Supports ARB VP/FP/GLSL and NV VP/FP
-* [http://code.google.com/p/glintercept/wiki/Screenshots Free camera]. Fly around the geometry sent to the graphics card and enable/disable wireframe/backface-culling/view frustum render.
+* Save all OpenGL function calls to text or [XML format](./Docs/Screenshots.md) with the option to log individual frames.
+* Activate and log ARB_debug_output/GL_KHR_debug messages to the [log](./Docs/Screenshots.md)
+* Run time [shader edit](./Docs/Screenshots.md). Display shader usage and edit the shaders at run time. Supports ARB VP/FP/GLSL and NV VP/FP
+* [Free camera](./Docs/Screenshots.md). Fly around the geometry sent to the graphics card and enable/disable wireframe/backface-culling/view frustum render.
 * Save and track textures. (1D,2D,3D,NVRect and p-buffer bound textures are supported.) Saving can be to TGA,PNG and JPG formats.
 * Save and track shaders/programs.
 * Save and track display lists.
 * Saving of the OpenGL frame buffer (color/depth/stencil) pre and post render calls. The ability to save the "diff" of pre and post images is also available.
-* [http://code.google.com/p/glintercept/wiki/Screenshots Track error states] (logging them to the debugger output) and breaking on errors.
+* [Track error states](./Docs/Screenshots.md) (logging them to the debugger output) and breaking on errors.
 * Basic thread error checking.
 * Function timer log.
 * Resource leak tracking for contexts, display lists, shaders and textures.
-* [http://code.google.com/p/glintercept/wiki/Screenshots OpenGL extension/version override]. Add/remove/replace the OpenGL extension and version strings. (Test lower end rendering paths without changing cards)
+* [OpenGL extension/version override](./Docs/Screenshots.md). Add/remove/replace the OpenGL extension and version strings. (Test lower end rendering paths without changing cards)
 * OpenGL function stats - how many times each function is called.
 
 ##License##
