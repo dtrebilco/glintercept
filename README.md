@@ -1,4 +1,4 @@
-# ![](./Docs/Images/GLicon.png=raw) GLIntercept
+# ![](./Docs/Images/GLicon.png?raw=true) GLIntercept
 
 ##About##
 GLIntercept is a OpenGL function call interceptor for Windows that will intercept and log **all** [OpenGL](http://www.opengl.org) calls. 
