@@ -422,7 +422,7 @@ time you run a OpenGL app. (no re-compiling is necessary)
 6) Contact
 
 Bug reports/feature requests can be reported at:
-http://code.google.com/p/glintercept/issues/list
+https://github.com/dtrebilco/glintercept/issues
 
 Any questions cane be sent to:
 dtrebilco@techie.com
