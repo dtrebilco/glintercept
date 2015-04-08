@@ -4,7 +4,8 @@
 GLIntercept is a OpenGL function call interceptor for Windows that will intercept and log **all** [OpenGL](http://www.opengl.org) calls. 
 
 ##Basic usage##
-Select the version of GLIntercept right for the application being debugged (x86 or x64) - *Note* you select the version of GLIntercept based on if the _application_ is x86 or x64 (64bit) - not if the operating system is 64 bit.
+Select the version of GLIntercept right for the application being debugged (x86 or x64) 
+_**Note**_ you select the version of GLIntercept based on if the _application_ is x86 or x64 (64bit) - not if the operating system is 64 bit.
 
 Then after installation, simply copy the opengl32.dll and a gliConfig.ini file from 
 the install directory to the executable folder of the application you want to
@@ -29,20 +30,20 @@ GLIntercept has existed since 2003 and was mainly designed as an OpenGL 1.0-2.1 
 ##Features##
 Main GLIntercept features:
 
-    * Save all OpenGL function calls to text or [http://code.google.com/p/glintercept/wiki/Screenshots XML format] with the option to log individual frames.
-    * Activate and log ARB_debug_output/GL_KHR_debug messages to the [http://code.google.com/p/glintercept/wiki/Screenshots log]
-    * Run time [http://code.google.com/p/glintercept/wiki/Screenshots shader edit]. Display shader usage and edit the shaders at run time. Supports ARB VP/FP/GLSL and NV VP/FP
-    * [http://code.google.com/p/glintercept/wiki/Screenshots Free camera]. Fly around the geometry sent to the graphics card and enable/disable wireframe/backface-culling/view frustum render.
-    * Save and track textures. (1D,2D,3D,NVRect and p-buffer bound textures are supported.) Saving can be to TGA,PNG and JPG formats.
-    * Save and track shaders/programs.
-    * Save and track display lists.
-    * Saving of the OpenGL frame buffer (color/depth/stencil) pre and post render calls. The ability to save the "diff" of pre and post images is also available.
-    * [http://code.google.com/p/glintercept/wiki/Screenshots Track error states] (logging them to the debugger output) and breaking on errors.
-    * Basic thread error checking.
-    * Function timer log.
-    * Resource leak tracking for contexts, display lists, shaders and textures.
-    * [http://code.google.com/p/glintercept/wiki/Screenshots OpenGL extension/version override]. Add/remove/replace the OpenGL extension and version strings. (Test lower end rendering paths without changing cards)
-    * OpenGL function stats - how many times each function is called.
+* Save all OpenGL function calls to text or [http://code.google.com/p/glintercept/wiki/Screenshots XML format] with the option to log individual frames.
+* Activate and log ARB_debug_output/GL_KHR_debug messages to the [http://code.google.com/p/glintercept/wiki/Screenshots log]
+* Run time [http://code.google.com/p/glintercept/wiki/Screenshots shader edit]. Display shader usage and edit the shaders at run time. Supports ARB VP/FP/GLSL and NV VP/FP
+* [http://code.google.com/p/glintercept/wiki/Screenshots Free camera]. Fly around the geometry sent to the graphics card and enable/disable wireframe/backface-culling/view frustum render.
+* Save and track textures. (1D,2D,3D,NVRect and p-buffer bound textures are supported.) Saving can be to TGA,PNG and JPG formats.
+* Save and track shaders/programs.
+* Save and track display lists.
+* Saving of the OpenGL frame buffer (color/depth/stencil) pre and post render calls. The ability to save the "diff" of pre and post images is also available.
+* [http://code.google.com/p/glintercept/wiki/Screenshots Track error states] (logging them to the debugger output) and breaking on errors.
+* Basic thread error checking.
+* Function timer log.
+* Resource leak tracking for contexts, display lists, shaders and textures.
+* [http://code.google.com/p/glintercept/wiki/Screenshots OpenGL extension/version override]. Add/remove/replace the OpenGL extension and version strings. (Test lower end rendering paths without changing cards)
+* OpenGL function stats - how many times each function is called.
 
 ##License##
 *Note* Older versions of GLIntercept were licensed under the GPLv2. Newer versions (1.0+) are MIT licensed.
