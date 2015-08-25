@@ -3,6 +3,9 @@
 ##About##
 GLIntercept is a OpenGL function call interceptor for Windows that will intercept and log **all** [OpenGL](http://www.opengl.org) calls. 
 
+##Binaries##
+Binaries of releases can be downloaded [here](https://github.com/dtrebilco/glintercept/releases)
+
 ##Basic usage##
 Select the version of GLIntercept right for the application being debugged (x86 or x64) 
 
