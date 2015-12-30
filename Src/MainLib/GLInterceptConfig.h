@@ -12,8 +12,8 @@
 #define __GLI_DEBUG
 
 //Build version
-#define __GLI_BUILD_VER      1.32
-#define __GLI_BUILD_VER_STR "1.32"
+#define __GLI_BUILD_VER      1.33
+#define __GLI_BUILD_VER_STR "1.33"
 
  
 //Misc type defines
