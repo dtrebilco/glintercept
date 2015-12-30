@@ -2,7 +2,7 @@
 
 enum Main {
 
-  GL_PRIMITIVE_BOUNDING_BOX_EXT       = 0x92BE,
+  //GL_PRIMITIVE_BOUNDING_BOX_EXT       = 0x92BE,
 
 };
 

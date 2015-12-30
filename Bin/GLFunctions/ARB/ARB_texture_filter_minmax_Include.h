@@ -1,0 +1,9 @@
+#define GLI_INCLUDE_GL_ARB_TEXTURE_FILTER_MINMAX
+
+enum Main {
+
+  GL_TEXTURE_REDUCTION_MODE_ARB       = 0x9366,
+  GL_WEIGHTED_AVERAGE_ARB             = 0x9367,
+
+};
+

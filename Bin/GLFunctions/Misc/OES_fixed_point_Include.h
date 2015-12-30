@@ -35,7 +35,6 @@ void glPointParameterxvOES(GLenum[Main] pname, const GLfixed *params);
 void glPointSizexOES(GLfixed size);
 void glPolygonOffsetxOES(GLfixed factor, GLfixed units);
 void glRotatexOES(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
-void glSampleCoverageOES(GLfixed value, GLboolean invert);
 void glScalexOES(GLfixed x, GLfixed y, GLfixed z);
 void glTexEnvxOES(GLenum[Main] target, GLenum[Main] pname, GLfixed param);
 void glTexEnvxvOES(GLenum[Main] target, GLenum[Main] pname, const GLfixed *params);

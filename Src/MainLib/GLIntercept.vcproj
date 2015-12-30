@@ -2505,7 +2505,15 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\ARB\ARB_es3_2_compatibility_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\ARB\ARB_geometry_shader4_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\ARB\ARB_gpu_shader_int64_Include.h"
 						>
 					</File>
 					<File
@@ -2533,6 +2541,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\ARB\ARB_parallel_shader_compile_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\ARB\ARB_pipeline_statistics_query_Include.h"
 						>
 					</File>
@@ -2542,6 +2554,10 @@
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\ARB\ARB_robustness_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\ARB\ARB_sample_locations_Include.h"
 						>
 					</File>
 					<File
@@ -2574,6 +2590,10 @@
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\ARB\ARB_texture_compression_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\ARB\ARB_texture_filter_minmax_Include.h"
 						>
 					</File>
 					<File
@@ -2685,11 +2705,19 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\NV\NV_command_list_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\NV\NV_compute_program5_Include.h"
 						>
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\NV\NV_conditional_render_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\NV\NV_conservative_raster_dilate_Include.h"
 						>
 					</File>
 					<File
@@ -2850,6 +2878,10 @@
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\NV\NV_point_sprite_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\NV\NV_polygon_mode_Include.h"
 						>
 					</File>
 					<File
@@ -3193,7 +3225,15 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_blend_func_extended_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_blend_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_buffer_storage_Include.h"
 						>
 					</File>
 					<File
@@ -3437,6 +3477,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_sparse_texture_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_stencil_clear_tag_Include.h"
 						>
 					</File>
@@ -3505,6 +3549,14 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_texture_srgb_r8_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_texture_srgb_rg8_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_texture_storage_Include.h"
 						>
 					</File>
@@ -3538,6 +3590,10 @@
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_x11_sync_object_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_yuv_target_Include.h"
 						>
 					</File>
 					<File
@@ -3613,6 +3669,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\IMG_texture_filter_cubic_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\IMG_user_clip_plane_Include.h"
 						>
 					</File>
@@ -3629,6 +3689,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\INTEL_framebuffer_cmaa_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\INTEL_map_texture_Include.h"
 						>
 					</File>
@@ -3642,6 +3706,10 @@
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\KHR_blend_equation_advanced_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\KHR_no_error_Include.h"
 						>
 					</File>
 					<File
@@ -3818,6 +3886,14 @@
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\OML_subsample_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\OVR_multiview_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\OVR_multiview_multisampled_render_to_texture_Include.h"
 						>
 					</File>
 					<File

@@ -1,0 +1,10 @@
+#define GLI_INCLUDE_GL_IMG_TEXTURE_FILTER_CUBIC
+
+enum Main {
+
+  GL_CUBIC_IMG                      = 0x9139,
+  GL_CUBIC_MIPMAP_NEAREST_IMG       = 0x913A,
+  GL_CUBIC_MIPMAP_LINEAR_IMG        = 0x913B,
+
+};
+
