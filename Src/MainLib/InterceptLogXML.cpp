@@ -26,8 +26,6 @@ xslFileName(newXSLFileName)
 
 }
 
-
-
 ///////////////////////////////////////////////////////////////////////////////
 //
 InterceptLogXML::~InterceptLogXML()
@@ -245,7 +243,7 @@ void InterceptLogXML::LogFunctionPre(const FunctionData *funcData,uint index, co
         {
           fprintf(logFile,"<TEXSTAGE number=\"%u\">",boundTextures[i].texStage);
           AddImageTag(boundTextures[i].texID);
-          fprintf(logFile,"</TEXSTAGE>",boundTextures[i].texStage);
+          fprintf(logFile,"</TEXSTAGE>");
         }
       }
     }
