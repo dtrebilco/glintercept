@@ -1,0 +1,8 @@
+#define GLI_INCLUDE_GL_NV_ROBUSTNESS_VIDEO_MEMORY_PURGE
+
+enum Main {
+
+  GL_PURGED_CONTEXT_RESET_NV       = 0x92BB,
+
+};
+

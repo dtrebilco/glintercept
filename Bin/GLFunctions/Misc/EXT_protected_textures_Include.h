@@ -1,0 +1,9 @@
+#define GLI_INCLUDE_GL_EXT_PROTECTED_TEXTURES
+
+enum Main {
+
+  //GL_CONTEXT_FLAG_PROTECTED_CONTENT_BIT_EXT       = 0x00000010,
+  GL_TEXTURE_PROTECTED_EXT                        = 0x8BFA,
+
+};
+

@@ -105,14 +105,14 @@ void glPrimitiveRestartIndex (GLuint index);
 
 void glCopyBufferSubData(GLenum[Main] readtarget, GLenum[Main] writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
 
-void glGetUniformIndices(GLuint program, GLsizei uniformCount, const GLchar** uniformNames, GLuint* uniformIndices);
+void glGetUniformIndices(GLGLSL_program program, GLsizei uniformCount, const GLchar** uniformNames, GLuint* uniformIndices);
 
-void glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint* uniformIndices, GLenum[Main] pname, GLint* params);
-void glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei* length, GLchar* uniformName);
+void glGetActiveUniformsiv(GLGLSL_program program, GLsizei uniformCount, const GLuint* uniformIndices, GLenum[Main] pname, GLint* params);
+void glGetActiveUniformName(GLGLSL_program program, GLuint uniformIndex, GLsizei bufSize, GLsizei* length, GLchar* uniformName);
 
-GLuint glGetUniformBlockIndex(GLuint program, const GLchar* uniformBlockName);
+GLuint glGetUniformBlockIndex(GLGLSL_program program, const GLchar* uniformBlockName);
 
-void glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, GLenum[Main] pname, GLint* params);
-void glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei* length, GLchar* uniformBlockName);
+void glGetActiveUniformBlockiv(GLGLSL_program program, GLuint uniformBlockIndex, GLenum[Main] pname, GLint* params);
+void glGetActiveUniformBlockName(GLGLSL_program program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei* length, GLchar* uniformBlockName);
 
-void glUniformBlockBinding(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);
+void glUniformBlockBinding(GLGLSL_program program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);

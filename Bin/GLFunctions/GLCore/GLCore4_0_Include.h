@@ -116,16 +116,16 @@ void glUniformMatrix3x2dv(GLint location, GLsizei count, GLboolean transpose, co
 void glUniformMatrix3x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 void glUniformMatrix4x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
 void glUniformMatrix4x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value);
-void glGetUniformdv(GLuint program, GLint location, GLdouble * params);
+void glGetUniformdv(GLGLSL_program program, GLint location, GLdouble * params);
 
-GLint glGetSubroutineUniformLocation(GLuint program, GLenum[Main] shadertype, const GLchar * name);
-GLuint glGetSubroutineIndex(GLuint program, GLenum[Main] shadertype, const GLchar * name);
-void glGetActiveSubroutineUniformiv(GLuint program, GLenum[Main] shadertype, GLuint index, GLenum[Main] pname, GLint * values);
-void glGetActiveSubroutineUniformName(GLuint program, GLenum[Main] shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name);
-void glGetActiveSubroutineName(GLuint program, GLenum[Main] shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name);
+GLint glGetSubroutineUniformLocation(GLGLSL_program program, GLenum[Main] shadertype, const GLchar * name);
+GLuint glGetSubroutineIndex(GLGLSL_program program, GLenum[Main] shadertype, const GLchar * name);
+void glGetActiveSubroutineUniformiv(GLGLSL_program program, GLenum[Main] shadertype, GLuint index, GLenum[Main] pname, GLint * values);
+void glGetActiveSubroutineUniformName(GLGLSL_program program, GLenum[Main] shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name);
+void glGetActiveSubroutineName(GLGLSL_program program, GLenum[Main] shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name);
 void glUniformSubroutinesuiv(GLenum[Main] shadertype, GLsizei count, const GLuint * indices);
 void glGetUniformSubroutineuiv(GLenum[Main] shadertype, GLint location, GLuint * params);
-void glGetProgramStageiv(GLuint program, GLenum[Main] shadertype, GLenum[Main] pname, GLint * values);
+void glGetProgramStageiv(GLGLSL_program program, GLenum[Main] shadertype, GLenum[Main] pname, GLint * values);
 
 void glPatchParameteri(GLenum[Main] pname, GLint value);
 void glPatchParameterfv(GLenum[Main] pname, const GLfloat * values);

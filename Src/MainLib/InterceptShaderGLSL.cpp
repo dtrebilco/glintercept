@@ -41,6 +41,7 @@ enum ShaderGLSLFunctionType
 {
   GLI_CREATE_SHADER_OBJECT =0,
   GLI_CREATE_PROGRAM_OBJECT,
+  GLI_CREATE_SHADER_PROGRAM,
 
   GLI_DELETE_PROGRAM,
   GLI_DELETE_SHADER,
@@ -84,6 +85,8 @@ ShaderGLSLLogData knownShaderFunctionsGLSL[] =
   ShaderGLSLLogData("glCreateProgram"         ,GLI_CREATE_PROGRAM_OBJECT,GLSLA_OBJECT_CREATE),
   ShaderGLSLLogData("glCreateProgramObjectARB",GLI_CREATE_PROGRAM_OBJECT,GLSLA_OBJECT_CREATE),
 
+  ShaderGLSLLogData("glCreateShaderProgramv",  GLI_CREATE_SHADER_PROGRAM,GLSLA_OBJECT_CREATE),
+
   ShaderGLSLLogData("glDeleteProgram"   ,GLI_DELETE_PROGRAM,GLSLA_OBJECT_DELETE),
   ShaderGLSLLogData("glDeleteShader"    ,GLI_DELETE_SHADER, GLSLA_OBJECT_DELETE),
   ShaderGLSLLogData("glDeleteObjectARB" ,GLI_DELETE_OBJECT, GLSLA_OBJECT_DELETE),
@@ -112,9 +115,47 @@ ShaderGLSLLogData knownShaderFunctionsGLSL[] =
 };
 
 
-
 #define NUM_SHADER_LOG_FUNCTIONS sizeof(knownShaderFunctionsGLSL)/sizeof(ShaderGLSLLogData)
 
+// Helper mapping structure
+struct ShaderTypeMapping
+{
+  ShaderTypeMapping(GLuint a_shaderType, const char * a_shaderTypeName)
+    : shaderType(a_shaderType)
+    , shaderTypeName(a_shaderTypeName)
+  {
+  }
+
+  GLuint shaderType;
+  const char * shaderTypeName;
+};
+
+// Mapping of known shader types
+static ShaderTypeMapping s_shaderTypeMappings[] =
+{
+  ShaderTypeMapping(GL_VERTEX_SHADER,   "Vertex"),
+  ShaderTypeMapping(GL_GEOMETRY_SHADER, "Geometry"),
+  ShaderTypeMapping(GL_FRAGMENT_SHADER, "Fragment"),
+  ShaderTypeMapping(GL_TESS_EVALUATION_SHADER, "TessEval"),
+  ShaderTypeMapping(GL_TESS_CONTROL_SHADER, "TessControl"),
+  ShaderTypeMapping(GL_COMPUTE_SHADER, "Compute"),
+};
+#define NUM_SHADER_TYPE_MAP (sizeof(s_shaderTypeMappings) / sizeof(ShaderTypeMapping))
+
+///////////////////////////////////////////////////////////////////////////////
+//
+static const char * GetShaderTypeString(GLuint typeID)
+{
+  for(uint i = 0; i < NUM_SHADER_TYPE_MAP; i++)
+  {
+    if(s_shaderTypeMappings[i].shaderType == typeID)
+    {
+      return s_shaderTypeMappings[i].shaderTypeName;
+    }
+  }
+
+  return "Unknown";
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -403,7 +444,7 @@ void InterceptShaderGLSL::LogFunctionPost(const FunctionData *funcData,uint inde
   switch(action)
   {
     case(GLSLA_OBJECT_CREATE) :
-      CreateObjectPost(funcData,index,retVal);
+      CreateObjectPost(funcData,index,retVal,knownShaderFunctionsGLSL[actionIndex].funcType);
       break;
     case(GLSLA_OBJECT_DELETE) :
       DeleteObjectPost(funcData,index,retVal,knownShaderFunctionsGLSL[actionIndex].funcType);
@@ -483,10 +524,34 @@ void InterceptShaderGLSL::CreateObjectPre(const FunctionData *funcData,uint inde
     //Get the type created
     args.Get(iObjectType);
   }
-  else if(funcType == GLI_CREATE_PROGRAM_OBJECT)
+  else if(funcType == GLI_CREATE_PROGRAM_OBJECT ||
+          funcType == GLI_CREATE_SHADER_PROGRAM)
   {
     //If it is a program object, just assign the type
     iObjectType = GL_PROGRAM_OBJECT_ARB;
+
+    // If creating a shader program
+    if(funcType == GLI_CREATE_SHADER_PROGRAM)
+    {
+      //Get the handle
+      GLenum type;
+      args.Get(type);
+
+      //Get number of strings
+      GLsizei numStrings;
+      args.Get(numStrings);
+
+      //Get the string array
+      void * dummyPtr;
+      args.Get(dummyPtr);  
+      GLchar **strArray = (GLchar **)dummyPtr;
+
+      StringPrintF(iShaderSource,"\n//======================================================\n"
+                                   "//   %s Shader \n"
+                                   "//======================================================\n", GetShaderTypeString(type));
+
+      iShaderSource += GetShaderSource(numStrings, strArray, NULL);
+    }
   }
   else
   {
@@ -498,13 +563,16 @@ void InterceptShaderGLSL::CreateObjectPre(const FunctionData *funcData,uint inde
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-void InterceptShaderGLSL::CreateObjectPost(const FunctionData *funcData,uint index, const FunctionRetValue & retVal)
+void InterceptShaderGLSL::CreateObjectPost(const FunctionData *funcData,uint index, const FunctionRetValue & retVal,uint funcType)
 {
   //Check the type
   if(iObjectType != GL_PROGRAM_OBJECT_ARB &&
      iObjectType != GL_VERTEX_SHADER  &&
      iObjectType != GL_GEOMETRY_SHADER &&
-     iObjectType != GL_FRAGMENT_SHADER)
+     iObjectType != GL_FRAGMENT_SHADER &&
+     iObjectType != GL_TESS_EVALUATION_SHADER &&
+     iObjectType != GL_TESS_CONTROL_SHADER &&
+     iObjectType != GL_COMPUTE_SHADER)
   {
     LOGERR(("InterceptShaderGLSL::CreateObjectPost - Unknown object type 0x%x",iObjectType));
     return;
@@ -538,6 +606,25 @@ void InterceptShaderGLSL::CreateObjectPost(const FunctionData *funcData,uint ind
 
     //Assign the object type (assigned as ready where there is some data to save)
     shaderData->SetGLType(iObjectType);
+
+    // If creating a shader program
+    if(funcType == GLI_CREATE_SHADER_PROGRAM)
+    {
+      SetShaderSource(shaderData, iShaderSource);
+
+      //Append log status
+      if(recordInfoLog)
+      {
+        string logString;
+        GetLogData(shaderData, logString);
+
+        //Assign the program source
+        shaderData->GetShaderLog() = logString;
+
+        //Set as dirty
+        shaderData->SetDirty(true);
+      }
+    }
   }
   else
   {
@@ -698,18 +785,18 @@ void InterceptShaderGLSL::ShaderSourcePre(const FunctionData *funcData,uint func
     return;
   }
 
+  SetShaderSource(shaderData, GetShaderSource(numStrings, strArray, strLengthArray));
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//
+string InterceptShaderGLSL::GetShaderSource(GLsizei numStrings, GLchar **strArray, const GLint * strLengthArray) const
+{
   //Check data
   if(numStrings <= 0 || strArray == NULL)
   {
-    LOGERR(("InterceptShaderGLSL::ShaderSourcePre - Bad data passed as source to shader ID %u",srcHandle));
-    return;
-  }
-
-  //Save the shader if dirty
-  if(shaderData->IsReady() && shaderData->IsDirty())
-  {
-    //Save the dirty shader before it is overwitten
-    SaveShaderData(shaderData);
+    LOGERR(("InterceptShaderGLSL::GetShaderSource - Bad data passed as source to shader"));
+    return "";
   }
 
   string shaderSrc;
@@ -744,6 +831,19 @@ void InterceptShaderGLSL::ShaderSourcePre(const FunctionData *funcData,uint func
     {
       shaderSrc += shaderFormat[i];
     }
+  }
+  return shaderSrc;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//
+void InterceptShaderGLSL::SetShaderSource(ShaderGLSLData * shaderData, const string& shaderSrc)
+{
+  //Save the shader if dirty
+  if(shaderData->IsReady() && shaderData->IsDirty())
+  {
+    //Save the dirty shader before it is overwitten
+    SaveShaderData(shaderData);
   }
 
   //Assign the shader source
@@ -946,6 +1046,9 @@ void InterceptShaderGLSL::LinkProgramPre(const FunctionData *funcData,uint funcT
   string vertexString;
   string geometryString;
   string fragmentString;
+  string tesEvalString;
+  string tesControlString;
+  string computeString;
   string bufString;
 
   //Get the array of associated shaders
@@ -962,35 +1065,49 @@ void InterceptShaderGLSL::LinkProgramPre(const FunctionData *funcData,uint funcT
     }
     else
     {
+      StringPrintF(bufString,"\n//======================================================\n"
+                               "//   %s Shader %u \n"
+                               "//======================================================\n", GetShaderTypeString(attachData->GetGLType()), attachedObjects[i]);
+
       //Save the shaders based on the different types
       switch(attachData->GetGLType())
       {
         case(GL_VERTEX_SHADER):
-          StringPrintF(bufString,"\n//======================================================\n"
-                                   "//   Vertex Shader %u \n"
-                                   "//======================================================\n",attachedObjects[i]);
           vertexString += bufString;
           vertexString += attachData->GetShaderLog();
           vertexString += attachData->GetShaderSource();
           break;
 
         case(GL_GEOMETRY_SHADER):
-          StringPrintF(bufString,"\n//======================================================\n"
-                                   "//   Geometry Shader %u \n"
-                                   "//======================================================\n",attachedObjects[i]);
           geometryString += bufString;
           geometryString += attachData->GetShaderLog();
           geometryString += attachData->GetShaderSource();
           break;
 
         case(GL_FRAGMENT_SHADER):
-          StringPrintF(bufString,"\n//======================================================\n"
-                                   "//   Fragment Shader %u\n"
-                                   "//======================================================\n",attachedObjects[i]);
           fragmentString += bufString;
           fragmentString += attachData->GetShaderLog();
           fragmentString += attachData->GetShaderSource();
           break;
+
+        case(GL_TESS_EVALUATION_SHADER):
+          tesEvalString += bufString;
+          tesEvalString += attachData->GetShaderLog();
+          tesEvalString += attachData->GetShaderSource();
+          break;
+
+        case(GL_TESS_CONTROL_SHADER):
+          tesControlString += bufString;
+          tesControlString += attachData->GetShaderLog();
+          tesControlString += attachData->GetShaderSource();
+          break;
+
+        case(GL_COMPUTE_SHADER):
+          computeString += bufString;
+          computeString += attachData->GetShaderLog();
+          computeString += attachData->GetShaderSource();
+          break;
+
         default:
           LOGERR(("InterceptShaderGLSL::LinkProgramPre - Unknown shader ID %u",attachedObjects[i]));
           break;
@@ -999,7 +1116,7 @@ void InterceptShaderGLSL::LinkProgramPre(const FunctionData *funcData,uint funcT
   }
 
   //Assign the program source
-  programData->GetShaderSource() = vertexString + geometryString + fragmentString;
+  programData->GetShaderSource() = vertexString + geometryString + tesEvalString + tesControlString + fragmentString + computeString;
 
   //Flag the program object as ready and dirty
   programData->SetReady();
@@ -1172,6 +1289,8 @@ void InterceptShaderGLSL::GetBoundProgram(GLuint &programID)
   GLint retData = 0;
   GLV.glGetIntegerv(GL_CURRENT_PROGRAM, &retData);
   programID = retData;
+
+// Get GL_PROGRAM_PIPELINE_BINDING and return all bound program stages?
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1223,6 +1342,9 @@ void InterceptShaderGLSL::GetLogData(const ShaderGLSLData *shaderData, string & 
     case(GL_FRAGMENT_SHADER) :
     case(GL_VERTEX_SHADER) :
     case(GL_GEOMETRY_SHADER) :
+    case(GL_TESS_EVALUATION_SHADER) :
+    case(GL_TESS_CONTROL_SHADER) :
+    case(GL_COMPUTE_SHADER) :
     {
       GLint compileStatus;
       iglGetShaderiv(shaderData->GetGLID(), GL_COMPILE_STATUS, &compileStatus);

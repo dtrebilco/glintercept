@@ -810,13 +810,13 @@ bool GLDriver::InitFunctionLog()
       if(FileUtils::CopyFile(configData.logXSLBaseDir + configData.logXSLFile ,currLogDir + configData.logXSLFile, true))
       {
         //Remove any properties on the newly copied file
-        FileUtils::SetFileProperties(currLogDir + configData.logXSLFile,FileUtils::FP_NORMAL);
+        FileUtils::SetFileProperties(currLogDir + configData.logXSLFile,FileUtils::FPROP_NORMAL);
 
 #ifdef GLI_BUILD_WINDOWS
 
         //Copy the "viewer" .hta file to allow IE users to view the logs without error messages
         FileUtils::CopyFile(configData.logXSLBaseDir + "IEViewLog.hta", currLogDir + "IEViewLog.hta", true);
-        FileUtils::SetFileProperties(currLogDir + "IEViewLog.hta", FileUtils::FP_NORMAL);
+        FileUtils::SetFileProperties(currLogDir + "IEViewLog.hta", FileUtils::FPROP_NORMAL);
 
 #endif //GLI_BUILD_WINDOWS
 

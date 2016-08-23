@@ -7,6 +7,7 @@
 #include "ShaderEditGLSL.h"
 #include "MiscUtils.h"
 #include "SubstituteShaderGLSL.h"
+#include "ShaderUtilsGLSL.h"
 #include "SEContext.h"
 #include <CommonErrorLog.h>
 
@@ -17,6 +18,7 @@ enum CallBackIDs
 {
   CBI_glCreateShaderObject = SHADER_GLSL_CALLBACK_INDEX,
   CBI_glCreateProgramObject,
+  CBI_glCreateShaderProgram,
 
   CBI_glDeleteObject,
   CBI_glDeleteShader,
@@ -155,6 +157,7 @@ bool ShaderEditGLSL::Init()
 
   FUNC_REGISTER("glCreateShader",CBI_glCreateShaderObject);
   FUNC_REGISTER("glCreateShaderObjectARB",CBI_glCreateShaderObject);
+  FUNC_REGISTER("glCreateShaderProgramv",  CBI_glCreateShaderProgram);
 
   FUNC_REGISTER("glCreateProgram",CBI_glCreateProgramObject);
   FUNC_REGISTER("glCreateProgramObjectARB",CBI_glCreateProgramObject);
@@ -244,6 +247,7 @@ void ShaderEditGLSL::LogFunctionPre(uint updateID, const char *funcName, uint fu
   {
     case(CBI_glCreateShaderObject) :
     case(CBI_glCreateProgramObject) :
+    case(CBI_glCreateShaderProgram) :
       CreateObjectPre(updateID,newArgs);
       break;
 
@@ -303,7 +307,8 @@ void ShaderEditGLSL::LogFunctionPost(uint updateID, const char *funcName, uint f
   {
     case(CBI_glCreateShaderObject) :
     case(CBI_glCreateProgramObject) :
-      CreateObjectPost(retVal);
+    case(CBI_glCreateShaderProgram) :
+      CreateObjectPost(updateID, retVal);
       break;
 
     case(CBI_glDeleteObject) :
@@ -353,10 +358,36 @@ void ShaderEditGLSL::CreateObjectPre(uint updateID, FunctionArgs & args)
     //Get the number of shader ID's created
     args.Get(iObjectType);
   }
-  else if(updateID == CBI_glCreateProgramObject)
+  else if(updateID == CBI_glCreateProgramObject ||
+          updateID == CBI_glCreateShaderProgram)
   {
     //If it is a program object, just assign the type
     iObjectType = GL_PROGRAM_OBJECT_ARB;
+
+    // If creating a shader program
+    if(updateID == CBI_glCreateShaderProgram)
+    {
+      //Get the handle
+      GLenum type;
+      args.Get(type);
+
+      //Get number of strings
+      GLsizei numStrings;
+      args.Get(numStrings);
+
+      //Get the string array
+      void * dummyPtr;
+      args.Get(dummyPtr);  
+      GLchar **strArray = (GLchar **)dummyPtr;
+
+      // Format the strings
+      ShaderUtilsGLSL::ShaderStrData data(type, GetShaderSource(numStrings, strArray, NULL));
+      
+      vector<ShaderUtilsGLSL::ShaderStrData> arrayData;
+      arrayData.push_back(data);
+      iShaderSource = "";
+      ShaderUtilsGLSL::AppendShaderStrings(arrayData, iShaderSource);
+    }
   }
   else
   {
@@ -368,14 +399,17 @@ void ShaderEditGLSL::CreateObjectPre(uint updateID, FunctionArgs & args)
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-void ShaderEditGLSL::CreateObjectPost(const FunctionRetValue & retVal)
+void ShaderEditGLSL::CreateObjectPost(uint updateID, const FunctionRetValue & retVal)
 {
 
   //Check the type
   if(iObjectType != GL_PROGRAM_OBJECT_ARB &&
      iObjectType != GL_VERTEX_SHADER  && 
      iObjectType != GL_GEOMETRY_SHADER  && 
-     iObjectType != GL_FRAGMENT_SHADER)
+     iObjectType != GL_FRAGMENT_SHADER &&
+     iObjectType != GL_TESS_EVALUATION_SHADER &&
+     iObjectType != GL_TESS_CONTROL_SHADER &&
+     iObjectType != GL_COMPUTE_SHADER)
   {
     LOGERR(("ShaderEditGLSL::CreateObjectPost - Unknown object type 0x%x",iObjectType));
     return;
@@ -409,6 +443,16 @@ void ShaderEditGLSL::CreateObjectPost(const FunctionRetValue & retVal)
 
     //Assign the object type (assigned as ready where there is some data to save)
     shaderData->SetGLType(iObjectType);
+
+    // If creating a shader program
+    if(updateID == CBI_glCreateShaderProgram)
+    {
+       //Assign the shader source
+      shaderData->SetShaderSource(iShaderSource);
+
+      //Set the shader as ready and dirty
+      shaderData->SetReady();
+    }
   }
   else
   {
@@ -577,6 +621,25 @@ void ShaderEditGLSL::ShaderSourcePre(FunctionArgs & args)
     return;
   }
 
+  //Assign the shader source
+  shaderData->SetShaderSource(GetShaderSource(numStrings, strArray, strLengthArray));
+
+  //Set the shader as ready and dirty
+  shaderData->SetReady();
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+string ShaderEditGLSL::GetShaderSource(GLsizei numStrings, GLchar **strArray, const GLint * strLengthArray) const
+{
+  //Check data
+  if(numStrings <= 0 || strArray == NULL)
+  {
+    LOGERR(("ShaderEditGLSL::GetShaderSource - Bad data passed as source to shader"));
+    return "";
+  }
+
   string shaderSrc;
 
   //Loop for the number of strings
@@ -609,12 +672,7 @@ void ShaderEditGLSL::ShaderSourcePre(FunctionArgs & args)
       shaderSrc += shaderFormat[i];
     }
   }
-
-  //Assign the shader source
-  shaderData->SetShaderSource(shaderSrc);
-
-  //Set the shader as ready and dirty
-  shaderData->SetReady();
+  return shaderSrc;
 }
 
 
@@ -1171,19 +1229,7 @@ GLuint ShaderEditGLSL::CompileShader(GLenum shaderType, const string &shaderSour
   GetLogData(newShader, compileLog, false);
   if(compileLog.size() > 0)
   {
-    if(shaderType == GL_VERTEX_SHADER)
-    {
-      retLog += "Vertex shader info log:\n";
-    }
-    if(shaderType == GL_GEOMETRY_SHADER)
-    {
-      retLog += "Geometry shader info log:\n";
-    }
-    if(shaderType == GL_FRAGMENT_SHADER)
-    {
-      retLog += "Fragment shader info log:\n";
-    }
-
+    retLog += ShaderUtilsGLSL::GetShaderTypeString(shaderType) + " shader info log:\n";
     retLog += compileLog;
     retLog += "\n";
   }

@@ -38,6 +38,9 @@ bool ShaderGLSLSaveManager::SaveShader(const string &fileName, const ShaderGLSLD
     case(GL_VERTEX_SHADER):
     case(GL_GEOMETRY_SHADER):
     case(GL_FRAGMENT_SHADER):
+    case(GL_TESS_EVALUATION_SHADER):
+    case(GL_TESS_CONTROL_SHADER):
+    case(GL_COMPUTE_SHADER):
       retValue = SaveFragmentVertexShaderData(fileName,shaderData,retFileName);
       break;
     case(GL_PROGRAM_OBJECT_ARB):

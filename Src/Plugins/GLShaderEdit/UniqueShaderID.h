@@ -23,12 +23,15 @@ class GLDriver;
 //Types of shaders handled
 enum USIDType
 {
-  USID_Undefined,           // Undefined shader type
+  USID_Undefined,             // Undefined shader type
  
-  USID_GLSLVertexShader,    // GLSL vertex shader
-  USID_GLSLGeometryShader,  // GLSL geometry shader
-  USID_GLSLFragmentShader,  // GLSL fragment shader
-  USID_GLSLProgram,         // GLSL program
+  USID_GLSLVertexShader,      // GLSL vertex shader
+  USID_GLSLGeometryShader,    // GLSL geometry shader
+  USID_GLSLFragmentShader,    // GLSL fragment shader
+  USID_GLSLTessEvalShader,    // GLSL tess evaluation shader
+  USID_GLSLTessControlShader, // GLSL tess control shader
+  USID_GLSLComputeShader,     // GLSL compute shader
+  USID_GLSLProgram,           // GLSL program
 
   USID_ARB_VP,              // ARB vertex program
   USID_ARB_FP,              // ARB fragment program

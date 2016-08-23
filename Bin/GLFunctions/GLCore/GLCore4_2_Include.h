@@ -126,7 +126,7 @@ void glDrawTransformFeedbackStreamInstanced(GLenum[Primitives] mode, GLuint id, 
 
 void glGetInternalformativ(GLenum[Main] target, GLenum[Main] internalformat, GLenum[Main] pname, GLsizei bufSize, GLint * params);
 
-void glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum[Main] pname, GLint * params);
+void glGetActiveAtomicCounterBufferiv(GLGLSL_program program, GLuint bufferIndex, GLenum[Main] pname, GLint * params);
 
 void glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum[Main] access, GLenum[Main] format);
 void glMemoryBarrier(GLbitfield[Mask_MemBarrierMask] barriers);

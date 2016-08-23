@@ -453,7 +453,8 @@ PluginData
     //
     // Name of plugin   |  Plugin load location
     // {  Plugin specific options. (See the plugins' config.ini file for options) }
-
+    
+    DebugContext = ("GLDebugContext/GLDebugContext.dll")
     OpenGLShaderEdit = ("GLShaderEdit/GLShaderEdit.dll")
     OpenGLFreeCamera = ("GLFreeCam/GLFreeCam.dll")
     {

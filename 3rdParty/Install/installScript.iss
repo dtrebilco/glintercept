@@ -5,12 +5,12 @@
 
 [Setup]
 
-AppVersion=1.3.3
-VersionInfoVersion=1.3.3.0
+AppVersion=1.3.4
+VersionInfoVersion=1.3.4.0
 
-AppVerName=GLIntercept 1.3.3
-DefaultDirName={pf}\GLIntercept_1_3_3
-OutputBaseFilename=GLIntercept_1_3_3
+AppVerName=GLIntercept 1.3.4
+DefaultDirName={pf}\GLIntercept_1_3_4
+OutputBaseFilename=GLIntercept_1_3_4
 
 AppName=GLIntercept
 DefaultGroupName=GLIntercept

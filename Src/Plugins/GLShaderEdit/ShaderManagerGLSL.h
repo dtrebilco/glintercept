@@ -189,6 +189,18 @@ inline void ShaderDataGLSL::SetGLType(GLenum type)
     case(GL_FRAGMENT_SHADER):
       shaderUID->SetShaderType(USID_GLSLFragmentShader);
       break;
+
+    case(GL_TESS_EVALUATION_SHADER):
+      shaderUID->SetShaderType(USID_GLSLTessEvalShader);
+      break;
+
+    case(GL_TESS_CONTROL_SHADER):
+      shaderUID->SetShaderType(USID_GLSLTessControlShader);
+      break;
+
+    case(GL_COMPUTE_SHADER):
+      shaderUID->SetShaderType(USID_GLSLComputeShader);
+      break;
   }
 }
  

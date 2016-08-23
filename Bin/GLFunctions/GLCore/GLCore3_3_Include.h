@@ -23,8 +23,8 @@ enum Main {
 
 void glVertexAttribDivisor(GLuint index, GLuint divisor);
 
-void glBindFragDataLocationIndexed(GLuint program, GLuint colorNumber, GLuint index, const GLchar * name);
-GLint glGetFragDataIndex(GLuint program, const GLchar * name);
+void glBindFragDataLocationIndexed(GLGLSL_program program, GLuint colorNumber, GLuint index, const GLchar * name);
+GLint glGetFragDataIndex(GLGLSL_program program, const GLchar * name);
 
 void glGenSamplers(GLsizei count, GLuint * samplers);
 void glDeleteSamplers(GLsizei count, const GLuint * samplers);

@@ -57,6 +57,15 @@ bool ShaderGLSLData::GetUniqueFileName(string &retString) const
     case(GL_PROGRAM_OBJECT_ARB):
       retString = retString + "PROG_";
       break;
+    case(GL_TESS_EVALUATION_SHADER):
+      retString = retString + "TES_";
+      break;
+    case(GL_TESS_CONTROL_SHADER):
+      retString = retString + "TCS_";
+      break;
+    case(GL_COMPUTE_SHADER):
+      retString = retString + "CS_";
+      break;
     default:
       StringPrintF(bufString,"0x%X_", glType);
       retString = retString + "UNKNOWN_" + bufString;

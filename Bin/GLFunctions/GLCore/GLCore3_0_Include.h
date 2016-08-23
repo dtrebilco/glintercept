@@ -305,7 +305,7 @@ void glBindBufferBase  (GLenum[Main] target, GLuint index, GLuint buffer);
 void glBindBufferRange (GLenum[Main] target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
 
 //void glBindFragDataLocation (GLuint program, GLuint color, const GLchar * name);
-void glBindFragDataLocation (GLuint program, GLuint color, const GLasciistring * name);
+void glBindFragDataLocation (GLGLSL_program program, GLuint color, const GLasciistring * name);
 void glClampColor (GLenum[Main] target, GLenum[Main] clamp);
 void glClearBufferfi (GLenum[Main] buffer, GLint drawbuffer, GLfloat depth, GLint stencil);
 void glClearBufferfv (GLenum[Main] buffer, GLint drawbuffer, const GLfloat * value);
@@ -321,14 +321,14 @@ void glEndTransformFeedback (void);
 
 void glGetBooleani_v (GLenum[Main] target, GLuint index, GLboolean * data);
 //GLint glGetFragDataLocation (GLuint program, const GLchar * name);
-GLint glGetFragDataLocation (GLuint program, const GLasciistring * name);
+GLint glGetFragDataLocation (GLGLSL_program program, const GLasciistring * name);
 void glGetIntegeri_v  (GLenum[Main] target, GLuint index, GLint * data);
 const GLasciistring* glGetStringi (GLenum[Main] name, GLuint index);
 
 void glGetTexParameterIiv (GLenum[Main] target, GLenum[Main] pname, GLint * params);
 void glGetTexParameterIuiv (GLenum[Main] target, GLenum[Main] pname, GLuint * params);
-void glGetTransformFeedbackVarying (GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, GLenum * type, GLchar * name);
-void glGetUniformuiv (GLuint program, GLint location, GLuint * params);
+void glGetTransformFeedbackVarying (GLGLSL_program program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, GLenum * type, GLchar * name);
+void glGetUniformuiv (GLGLSL_program program, GLint location, GLuint * params);
 void glGetVertexAttribIiv (GLuint index, GLenum[Main] pname, GLint * params);
 void glGetVertexAttribIuiv (GLuint index, GLenum[Main] pname, GLuint * params);
 
@@ -336,7 +336,7 @@ GLboolean glIsEnabledi  (GLenum[Main] target, GLuint index);
 
 void glTexParameterIiv (GLenum[Main] target, GLenum[Main] pname, const GLint * params);
 void glTexParameterIuiv (GLenum[Main] target, GLenum[Main] pname, const GLuint * params);
-void glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar ** varyings, GLenum[Main] bufferMode);
+void glTransformFeedbackVaryings(GLGLSL_program program, GLsizei count, const GLchar ** varyings, GLenum[Main] bufferMode);
 
 // New uniforms to handle
 void glUniform1ui (GLint location, GLuint v0);

@@ -190,6 +190,17 @@ public:
   //
   static bool ExtractShaderStrings(const string &shaderSource, vector<ShaderStrData> &retSources);
 
+  //@
+  //  Summary:
+  //    Get the shader type string
+  //
+  //  Parameters:
+  //    typeID  - The GL shader type ID
+  //
+  //  Returns:
+  //    If a known GL type, a string name - else the string "Unknown"
+  static string GetShaderTypeString(GLuint typeID);
+
 protected:
  
   InterceptPluginCallbacks *gliCallBacks;         // The callback interface into GLIntercept

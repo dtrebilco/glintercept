@@ -30,6 +30,9 @@ static ShaderTypeMapping s_shaderTypeMappings[] =
   ShaderTypeMapping(GL_VERTEX_SHADER,   "Vertex"),
   ShaderTypeMapping(GL_GEOMETRY_SHADER, "Geometry"),
   ShaderTypeMapping(GL_FRAGMENT_SHADER, "Fragment"),
+  ShaderTypeMapping(GL_TESS_EVALUATION_SHADER, "TessEval"),
+  ShaderTypeMapping(GL_TESS_CONTROL_SHADER, "TessControl"),
+  ShaderTypeMapping(GL_COMPUTE_SHADER, "Compute"),
 };
 #define NUM_SHADER_TYPE_MAP (sizeof(s_shaderTypeMappings) / sizeof(ShaderTypeMapping))
 
@@ -781,6 +784,18 @@ bool ShaderUtilsGLSL::FindShaderToken(const string &shaderSource, uint startInde
   }
 
   return false;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//
+string ShaderUtilsGLSL::GetShaderTypeString(GLuint typeID)
+{
+  int typeIndex = ShaderUtilsGLSL::GetShaderTypeIndex(typeID);
+  if(typeIndex >= 0)
+  {
+    return s_shaderTypeMappings[typeIndex].shaderTypeName;
+  }
+  return "Unknown";
 }
 
 ///////////////////////////////////////////////////////////////////////////////

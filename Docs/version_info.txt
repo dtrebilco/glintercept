@@ -2,6 +2,12 @@
 - What's new -
 ===============================================================================
 
+Version 1.3.4 
+-------------------------------------------------------------------------------
+- Added logging of tessellation and compute shaders
+- Initial logging of shaders loaded via pipeline stages (incomplete) 
+
+
 Version 1.3.3 
 -------------------------------------------------------------------------------
 - Added latest OpenGL extensions

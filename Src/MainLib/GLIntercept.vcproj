@@ -2705,6 +2705,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\NV\NV_clip_space_w_scaling_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\NV\NV_command_list_Include.h"
 						>
 					</File>
@@ -2722,6 +2726,10 @@
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\NV\NV_conservative_raster_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\NV\NV_conservative_raster_pre_snap_triangles_Include.h"
 						>
 					</File>
 					<File
@@ -2901,6 +2909,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\NV\NV_robustness_video_memory_purge_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\NV\NV_sample_locations_Include.h"
 						>
 					</File>
@@ -2986,6 +2998,10 @@
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\NV\NV_viewport_array_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\NV\NV_viewport_swizzle_Include.h"
 						>
 					</File>
 					<File
@@ -3437,6 +3453,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_protected_textures_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_provoking_vertex_Include.h"
 						>
 					</File>
@@ -3466,6 +3486,10 @@
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_shader_image_load_store_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_shader_pixel_local_storage2_Include.h"
 						>
 					</File>
 					<File
@@ -3589,6 +3613,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_window_rectangles_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\EXT_x11_sync_object_Include.h"
 						>
 					</File>
@@ -3645,6 +3673,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\IMG_framebuffer_downsample_Include.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\IMG_multisampled_render_to_texture_Include.h"
 						>
 					</File>
@@ -3686,6 +3718,10 @@
 					</File>
 					<File
 						RelativePath="..\..\Bin\GLFunctions\Misc\INGR_interlace_read_Include.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\Bin\GLFunctions\Misc\INTEL_conservative_rasterization_Include.h"
 						>
 					</File>
 					<File

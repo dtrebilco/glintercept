@@ -139,10 +139,10 @@ void glGetCompressedTextureSubImage(GLuint texture, GLint level, GLint xoffset, 
 GLenum[Main] glGetGraphicsResetStatus(void);
 void glGetnCompressedTexImage(GLenum[Main] target, GLint lod, GLsizei bufSize, void *pixels);
 void glGetnTexImage(GLenum[Main] target, GLint level, GLenum[Main] format, GLenum[Main] type, GLsizei bufSize, void *pixels);
-void glGetnUniformdv(GLuint program, GLint location, GLsizei bufSize, GLdouble *params);
-void glGetnUniformfv(GLuint program, GLint location, GLsizei bufSize, GLfloat *params);
-void glGetnUniformiv(GLuint program, GLint location, GLsizei bufSize, GLint *params);
-void glGetnUniformuiv(GLuint program, GLint location, GLsizei bufSize, GLuint *params);
+void glGetnUniformdv(GLGLSL_program program, GLint location, GLsizei bufSize, GLdouble *params);
+void glGetnUniformfv(GLGLSL_program program, GLint location, GLsizei bufSize, GLfloat *params);
+void glGetnUniformiv(GLGLSL_program program, GLint location, GLsizei bufSize, GLint *params);
+void glGetnUniformuiv(GLGLSL_program program, GLint location, GLsizei bufSize, GLuint *params);
 void glReadnPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum[Main] format, GLenum[Main] type, GLsizei bufSize, void *data);
 void glGetnMapdv(GLenum[Main] target, GLenum[Main] query, GLsizei bufSize, GLdouble *v);
 void glGetnMapfv(GLenum[Main] target, GLenum[Main] query, GLsizei bufSize, GLfloat *v);

@@ -251,6 +251,7 @@ private:
   GLenum   iObjectType;                           // Internal variable to cache data on shader creation
   GLuint   iHandle;                               // Internal data to cache a handle type across a pre/post call   
   GLuint   iHandleDetach;                         // Internal data to cache a handle type across a pre/post call   
+  string   iShaderSource;                         // Internal source data to cache across a pre/post call
 
   //Internal entry points to the OpenGL driver
   void (GLAPIENTRY *iglGetProgramiv) (GLuint object,GLenum pname,GLint *params);
@@ -269,7 +270,7 @@ private:
 
   //Creates a object shader/program
   void CreateObjectPre(const FunctionData *funcData,uint funcTableIndex, FunctionArgs & args,uint funcType);
-  void CreateObjectPost(const FunctionData *funcData,uint funcTableIndex, const FunctionRetValue & retVal);
+  void CreateObjectPost(const FunctionData *funcData,uint funcTableIndex, const FunctionRetValue & retVal,uint funcType);
 
   //Delete object
   void DeleteObjectPre(const FunctionData *funcData,uint funcTableIndex, FunctionArgs & args);
@@ -277,6 +278,8 @@ private:
 
   //Supply shader source
   void ShaderSourcePre(const FunctionData *funcData,uint funcTableIndex, FunctionArgs & args);
+  string GetShaderSource(GLsizei numStrings, GLchar **strArray, const GLint * strLengthArray) const;
+  void SetShaderSource(ShaderGLSLData * shaderData, const string& shaderSrc);
 
   //Attach/Detach object
   void AttachObjectPre(const FunctionData *funcData,uint funcTableIndex, FunctionArgs & args);

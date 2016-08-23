@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
     <!--
-    Copyright (c) 2013-2014 The Khronos Group Inc.
+    Copyright (c) 2013-2016 The Khronos Group Inc.
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and/or associated documentation files (the
@@ -76,6 +76,7 @@
         <type requires="khrplatform">typedef khronos_utime_nanoseconds_t <name>EGLTimeNV</name>;</type>
         <type requires="khrplatform">typedef khronos_utime_nanoseconds_t <name>EGLuint64NV</name>;</type>
         <type requires="khrplatform">typedef khronos_uint64_t <name>EGLuint64KHR</name>;</type>
+        <type requires="khrplatform">typedef khronos_stime_nanoseconds_t <name>EGLnsecsANDROID</name>;</type>
         <type>typedef int <name>EGLNativeFileDescriptorKHR</name>;</type>
         <type requires="khrplatform">typedef khronos_ssize_t <name>EGLsizeiANDROID</name>;</type>
         <type requires="EGLsizeiANDROID">typedef void (*<name>EGLSetBlobFuncANDROID</name>) (const void *key, EGLsizeiANDROID keySize, const void *value, EGLsizeiANDROID valueSize);</type>
@@ -112,6 +113,7 @@
             <!--
         <enum value="0x0800"      name="EGL_STREAM_BIT_NV" comment="Draft EGL_NV_stream_producer_eglsurface extension (bug 8064)"/>
             -->
+        <enum value="0x1000" name="EGL_MUTABLE_RENDER_BUFFER_BIT_KHR"/>
     </enums>
 
     <enums namespace="EGLRenderableTypeMask" type="bitmask" comment="EGL_RENDERABLE_TYPE bits">
@@ -128,6 +130,12 @@
     <enums namespace="EGLLockUsageHintKHRMask" type="bitmask" comment="EGL_LOCK_USAGE_HINT_KHR bits">
         <enum value="0x0001" name="EGL_READ_SURFACE_BIT_KHR"/>
         <enum value="0x0002" name="EGL_WRITE_SURFACE_BIT_KHR"/>
+    </enums>
+
+    <enums namespace="EGLNativeBufferUsageFlags" type="bitmask" comment="EGL_NATIVE_BUFFER_USAGE_ANDROID bits">
+        <enum value="0x00000001" name="EGL_NATIVE_BUFFER_USAGE_PROTECTED_BIT_ANDROID"/>
+        <enum value="0x00000002" name="EGL_NATIVE_BUFFER_USAGE_RENDERBUFFER_BIT_ANDROID"/>
+        <enum value="0x00000004" name="EGL_NATIVE_BUFFER_USAGE_TEXTURE_BIT_ANDROID"/>
     </enums>
 
     <enums namespace="EGLSyncFlagsKHR" type="bitmask" comment="Fence/reusable sync wait bits">
@@ -356,7 +364,7 @@
         <enum value="0x30BD" name="EGL_GL_TEXTURE_ZOFFSET"/>
         <enum value="0x30BD" name="EGL_GL_TEXTURE_ZOFFSET_KHR" alias="EGL_GL_TEXTURE_ZOFFSET"/>
         <enum value="0x30BE" name="EGL_POST_SUB_BUFFER_SUPPORTED_NV"/>
-        <enum value="0x30BF" name="EGL_CONTEXT_OPENGL_ROBUST_ACCESS_EXT" alias="EGL_CONTEXT_OPENGL_ROBUST_ACCESS"/>
+        <enum value="0x30BF" name="EGL_CONTEXT_OPENGL_ROBUST_ACCESS_EXT"/>
     </enums>
 
     <enums namespace="EGL" start="0x30C0-0x30CF" vendor="KHR">
@@ -441,7 +449,10 @@
         <enum value="0x3101" name="EGL_CONTEXT_PRIORITY_HIGH_IMG"/>
         <enum value="0x3102" name="EGL_CONTEXT_PRIORITY_MEDIUM_IMG"/>
         <enum value="0x3103" name="EGL_CONTEXT_PRIORITY_LOW_IMG"/>
-            <unused start="0x3104" end="0x310F"/>
+            <unused start="0x3104"/>
+        <enum value="0x3105" name="EGL_NATIVE_BUFFER_MULTIPLANE_SEPARATE_IMG"/>
+        <enum value="0x3106" name="EGL_NATIVE_BUFFER_PLANE_OFFSET_IMG"/>
+            <unused start="0x3107" end="0x310F"/>
     </enums>
 
     <enums namespace="EGL" start="0x3110" end="0x311F" vendor="ATX" comment="Reserved for Tim Renouf, Antix (Khronos bug 4949)">
@@ -474,12 +485,14 @@
         <enum value="0x3140" name="EGL_NATIVE_BUFFER_ANDROID"/>
         <enum value="0x3141" name="EGL_PLATFORM_ANDROID_KHR"/>
         <enum value="0x3142" name="EGL_RECORDABLE_ANDROID"/>
-            <unused start="0x3143"/>
+        <enum value="0x3143" name="EGL_NATIVE_BUFFER_USAGE_ANDROID"/>
         <enum value="0x3144" name="EGL_SYNC_NATIVE_FENCE_ANDROID"/>
         <enum value="0x3145" name="EGL_SYNC_NATIVE_FENCE_FD_ANDROID"/>
         <enum value="0x3146" name="EGL_SYNC_NATIVE_FENCE_SIGNALED_ANDROID"/>
         <enum value="0x3147" name="EGL_FRAMEBUFFER_TARGET_ANDROID"/>
-            <unused start="0x3148" end="0x314F"/>
+            <unused start="0x3148" end="0x314B"/>
+        <enum value="0x314C"     name="EGL_FRONT_BUFFER_AUTO_REFRESH_ANDROID"/>
+            <unused start="0x314D" end="0x314F"/>
     </enums>
 
     <enums namespace="EGL" start="0x3150" end="0x315F" vendor="NOK" comment="Reserved for Robert Palmer (Khronos bug 5368)">
@@ -719,7 +732,9 @@
         <enum value="0x332C" name="EGL_YUV_PLANE0_TEXTURE_UNIT_NV"/>
         <enum value="0x332D" name="EGL_YUV_PLANE1_TEXTURE_UNIT_NV"/>
         <enum value="0x332E" name="EGL_YUV_PLANE2_TEXTURE_UNIT_NV"/>
-            <unused start="0x332F" end="0x339F"/>
+            <unused start="0x332F" end="0x334B"/>
+        <enum value="0x334C" name="EGL_GENERATE_RESET_ON_VIDEO_MEMORY_PURGE_NV"/>
+            <unused start="0x334D" end="0x339F"/>
     </enums>
 
     <enums namespace="EGL" start="0x33A0" end="0x33AF" vendor="ANGLE" comment="Reserved for Shannon Woods (Bug 13175)">
@@ -753,6 +768,10 @@
             <unused start="0x33E0" end="0x342F"/>
     </enums>
 
+    <enums namespace="EGL" start="0x3430" end="0x343F" vendor="ANDROID" comment="Reserved for Pablo Ceballos (Bug 15874)">
+            <unused start="0x3430" end="0x343F"/>
+    </enums>
+
 <!-- Please remember that new enumerant allocations must be obtained by
      request to the Khronos API registrar (see comments at the top of this
      file) File requests in the Khronos Bugzilla, EGL project, Registry
@@ -762,8 +781,8 @@
 
 <!-- Reservable for future use. To generate a new range, allocate multiples
      of 16 starting at the lowest available point in this block. -->
-    <enums namespace="EGL" start="0x3420" end="0x3FFF" vendor="KHR">
-            <unused start="0x3420" end="0x3FFF" comment="Reserved for future use"/>
+    <enums namespace="EGL" start="0x3440" end="0x3FFF" vendor="KHR">
+            <unused start="0x3440" end="0x3FFF" comment="Reserved for future use"/>
     </enums>
 
     <enums namespace="EGL" start="0x8F70" end="0x8F7F" vendor="HI" comment="For Mark Callow, Khronos bug 4055. Shared with GL.">
@@ -853,6 +872,10 @@
             <param><ptype>EGLContext</ptype> <name>ctx</name></param>
             <param><ptype>EGLenum</ptype> <name>target</name></param>
             <param><ptype>EGLClientBuffer</ptype> <name>buffer</name></param>
+            <param>const <ptype>EGLint</ptype> *<name>attrib_list</name></param>
+        </command>
+        <command>
+            <proto><ptype>EGLClientBuffer</ptype> <name>eglCreateNativeClientBufferANDROID</name></proto>
             <param>const <ptype>EGLint</ptype> *<name>attrib_list</name></param>
         </command>
         <command>
@@ -1181,6 +1204,12 @@
             <param><ptype>EGLint</ptype> <name>y</name></param>
             <param><ptype>EGLint</ptype> <name>width</name></param>
             <param><ptype>EGLint</ptype> <name>height</name></param>
+        </command>
+        <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglPresentationTimeANDROID</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLSurface</ptype> <name>surface</name></param>
+            <param><ptype>EGLnsecsANDROID</ptype> <name>time</name></param>
         </command>
         <command>
             <proto><ptype>EGLenum</ptype> <name>eglQueryAPI</name></proto>
@@ -1751,9 +1780,23 @@
                 <command name="eglSetBlobCacheFuncsANDROID"/>
             </require>
         </extension>
+        <extension name="EGL_ANDROID_create_native_client_buffer" supported="egl">
+            <require>
+                <enum name="EGL_NATIVE_BUFFER_USAGE_ANDROID"/>
+                <enum name="EGL_NATIVE_BUFFER_USAGE_PROTECTED_BIT_ANDROID"/>
+                <enum name="EGL_NATIVE_BUFFER_USAGE_RENDERBUFFER_BIT_ANDROID"/>
+                <enum name="EGL_NATIVE_BUFFER_USAGE_TEXTURE_BIT_ANDROID"/>
+                <command name="eglCreateNativeClientBufferANDROID"/>
+            </require>
+        </extension>
         <extension name="EGL_ANDROID_framebuffer_target" supported="egl">
             <require>
                 <enum name="EGL_FRAMEBUFFER_TARGET_ANDROID"/>
+            </require>
+        </extension>
+        <extension name="EGL_ANDROID_front_buffer_auto_refresh" supported="egl">
+            <require>
+                <enum name="EGL_FRONT_BUFFER_AUTO_REFRESH_ANDROID"/>
             </require>
         </extension>
         <extension name="EGL_ANDROID_image_native_buffer" supported="egl">
@@ -1768,6 +1811,11 @@
                 <enum name="EGL_SYNC_NATIVE_FENCE_SIGNALED_ANDROID"/>
                 <enum name="EGL_NO_NATIVE_FENCE_FD_ANDROID"/>
                 <command name="eglDupNativeFenceFDANDROID"/>
+            </require>
+        </extension>
+        <extension name="EGL_ANDROID_presentation_time" supported="egl">
+            <require>
+                <command name="eglPresentationTimeANDROID"/>
             </require>
         </extension>
         <extension name="EGL_ANDROID_recordable" supported="egl">
@@ -1942,6 +1990,11 @@
                 <enum name="EGL_PLATFORM_X11_SCREEN_EXT"/>
             </require>
         </extension>
+        <extension name="EGL_EXT_protected_content" supported="egl">
+            <require>
+                <enum name="EGL_PROTECTED_CONTENT_EXT"/>
+            </require>
+        </extension>
         <extension name="EGL_EXT_protected_surface" supported="egl">
             <require>
                 <enum name="EGL_PROTECTED_CONTENT_EXT"/>
@@ -2006,6 +2059,12 @@
                 <enum name="EGL_CONTEXT_PRIORITY_HIGH_IMG"/>
                 <enum name="EGL_CONTEXT_PRIORITY_MEDIUM_IMG"/>
                 <enum name="EGL_CONTEXT_PRIORITY_LOW_IMG"/>
+            </require>
+        </extension>
+        <extension name="EGL_IMG_image_plane_attribs" supported="egl">
+            <require>
+                <enum name="EGL_NATIVE_BUFFER_MULTIPLANE_SEPARATE_IMG"/>
+                <enum name="EGL_NATIVE_BUFFER_PLANE_OFFSET_IMG"/>
             </require>
         </extension>
         <extension name="EGL_KHR_cl_event" supported="egl">
@@ -2203,6 +2262,11 @@
                 <command name="eglLockSurfaceKHR"/>
                 <command name="eglUnlockSurfaceKHR"/>
                 <command name="eglQuerySurface64KHR"/>
+            </require>
+        </extension>
+        <extension name="EGL_KHR_mutable_render_buffer" supported="egl">
+            <require>
+                <enum name="EGL_MUTABLE_RENDER_BUFFER_BIT_KHR"/>
             </require>
         </extension>
         <extension name="EGL_KHR_partial_update" supported="egl">
@@ -2412,6 +2476,11 @@
             <require>
                 <enum name="EGL_POST_SUB_BUFFER_SUPPORTED_NV"/>
                 <command name="eglPostSubBufferNV"/>
+            </require>
+        </extension>
+        <extension name="EGL_NV_robustness_video_memory_purge" supported="egl">
+            <require>
+                <enum name="EGL_GENERATE_RESET_ON_VIDEO_MEMORY_PURGE_NV"/>
             </require>
         </extension>
         <extension name="EGL_NV_stream_consumer_gltexture_yuv" supported="egl">

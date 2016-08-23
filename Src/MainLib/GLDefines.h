@@ -1243,6 +1243,8 @@ DECLARE_HANDLE(HPBUFFERARB);
 /* reuse GL_TEXTURE_IMMUTABLE_FORMAT */
 #endif
 
+#define GL_COMPUTE_SHADER  0x91B9
+
 #ifndef GL_ARB_depth_buffer_float
 #define GL_DEPTH_COMPONENT32F             0x8CAC
 #define GL_DEPTH32F_STENCIL8              0x8CAD

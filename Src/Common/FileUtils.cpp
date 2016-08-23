@@ -58,15 +58,15 @@ bool FileUtils::CopyFile(const string &srcFile,const string &dstFile, bool overw
 bool FileUtils::SetFileProperties(const string &fileName,uint fileProperties)
 {
   //Check the property
-  if((fileProperties & FP_NORMAL) && 
-     (fileProperties != FP_NORMAL))
+  if((fileProperties & FPROP_NORMAL) && 
+     (fileProperties != FPROP_NORMAL))
   {
     LOGERR(("FileUtils::SetFileProperties - If the 'Normal' property is set, other properties cannot be set"));
     return false;
   }
 
   //Check the flag data
-  if((fileProperties | (FP_NORMAL | FP_READONLY)) != (FP_NORMAL | FP_READONLY))
+  if((fileProperties | (FPROP_NORMAL | FPROP_READONLY)) != (FPROP_NORMAL | FPROP_READONLY))
   {
     LOGERR(("FileUtils::SetFileProperties - Unknown flags passed in properties"));
     return false;
@@ -75,11 +75,11 @@ bool FileUtils::SetFileProperties(const string &fileName,uint fileProperties)
   DWORD osFileAttributes = 0;
 
   //Get the OS file attribute flags
-  if(fileProperties & FP_NORMAL)
+  if(fileProperties & FPROP_NORMAL)
   {
     osFileAttributes |= FILE_ATTRIBUTE_NORMAL;
   }
-  if(fileProperties & FP_READONLY)
+  if(fileProperties & FPROP_READONLY)
   {
     osFileAttributes |= FILE_ATTRIBUTE_READONLY;
   }
@@ -241,15 +241,15 @@ bool FileUtils::CopyFile(const string &srcFilename,const string &dstFilename, bo
 bool FileUtils::SetFileProperties(const string &fileName,uint fileProperties)
 {
   //Check the property
-  if((fileProperties & FP_NORMAL) && 
-     (fileProperties != FP_NORMAL))
+  if((fileProperties & FPROP_NORMAL) && 
+     (fileProperties != FPROP_NORMAL))
   {
     LOGERR(("FileUtils::SetFileProperties - If the 'Normal' property is set, other properties cannot be set"));
     return false;
   }
 
   //Check the flag data
-  if((fileProperties | (FP_NORMAL | FP_READONLY)) != (FP_NORMAL | FP_READONLY))
+  if((fileProperties | (FPROP_NORMAL | FPROP_READONLY)) != (FPROP_NORMAL | FPROP_READONLY))
   {
     LOGERR(("FileUtils::SetFileProperties - Unknown flags passed in properties"));
     return false;
@@ -258,11 +258,11 @@ bool FileUtils::SetFileProperties(const string &fileName,uint fileProperties)
   mode_t fileMode = 0;
   
   //Get the OS file attribute flags
-  if(fileProperties & FP_NORMAL)
+  if(fileProperties & FPROP_NORMAL)
   {
     fileMode = 0666; //Octal constant
   }
-  if(fileProperties & FP_READONLY)
+  if(fileProperties & FPROP_READONLY)
   {
     fileMode = 0444; //Octal constant
   }

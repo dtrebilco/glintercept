@@ -320,14 +320,14 @@ void glInvalidateSubFramebuffer(GLenum[Main] target, GLsizei numAttachments, con
 void glMultiDrawArraysIndirect(GLenum[Main] mode, const void * indirect, GLsizei drawcount, GLsizei stride);
 void glMultiDrawElementsIndirect(GLenum[Main] mode, GLenum[Main] type, const void * indirect, GLsizei drawcount, GLsizei stride);
 
-void glGetProgramInterfaceiv(GLuint program, GLenum[Main] programInterface, GLenum[Main] pname, GLint * params);
-GLuint glGetProgramResourceIndex(GLuint program, GLenum[Main] programInterface, const GLchar * name);
-void glGetProgramResourceName(GLuint program, GLenum[Main] programInterface, GLuint index, GLsizei bufSize, GLsizei * length, GLchar * name);
-void glGetProgramResourceiv(GLuint program, GLenum[Main] programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLint * params);
-GLint glGetProgramResourceLocation(GLuint program, GLenum[Main] programInterface, const GLchar * name);
-GLint glGetProgramResourceLocationIndex(GLuint program, GLenum[Main] programInterface, const GLchar * name);
+void glGetProgramInterfaceiv(GLGLSL_program program, GLenum[Main] programInterface, GLenum[Main] pname, GLint * params);
+GLuint glGetProgramResourceIndex(GLGLSL_program program, GLenum[Main] programInterface, const GLchar * name);
+void glGetProgramResourceName(GLGLSL_program program, GLenum[Main] programInterface, GLuint index, GLsizei bufSize, GLsizei * length, GLchar * name);
+void glGetProgramResourceiv(GLGLSL_program program, GLenum[Main] programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLint * params);
+GLint glGetProgramResourceLocation(GLGLSL_program program, GLenum[Main] programInterface, const GLchar * name);
+GLint glGetProgramResourceLocationIndex(GLGLSL_program program, GLenum[Main] programInterface, const GLchar * name);
 
-void glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
+void glShaderStorageBlockBinding(GLGLSL_program program, GLuint storageBlockIndex, GLuint storageBlockBinding);
 
 void glTexBufferRange(GLenum[Main] target, GLenum[Main] internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
 void glTexStorage2DMultisample(GLenum[Main] target, GLsizei samples, GLenum[Main] internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);

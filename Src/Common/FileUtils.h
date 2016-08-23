@@ -26,8 +26,8 @@ public:
   //Properties that can be set on files
   enum FileProperties
   {
-    FP_NORMAL   = 1 << 0L,     // Standard read/write access  
-    FP_READONLY = 1 << 1L,     // File is flagged as read only
+    FPROP_NORMAL   = 1 << 0L,     // Standard read/write access  
+    FPROP_READONLY = 1 << 1L,     // File is flagged as read only
   };
  
   //@
@@ -68,7 +68,7 @@ public:
   //    fileName  - The file name to set the properties for.
   //
   //    fileProperties  - The file properties Mask to set. 
-  //                      (cannot set incompatable flags such as FP_NORMAL and FP_READONLY)
+  //                      (cannot set incompatable flags such as FPROP_NORMAL and FPROP_READONLY)
   //
   //  Returns:
   //    True is returned on success, false if otherwise.
