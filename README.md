@@ -1,12 +1,12 @@
 # ![](./Docs/Images/GLicon.png?raw=true) GLIntercept
 
-##About##
+## About
 GLIntercept is a OpenGL function call interceptor for Windows that will intercept and log **all** [OpenGL](http://www.opengl.org) calls. 
 
-##Binaries##
+## Binaries
 Binaries of releases can be downloaded [here](https://github.com/dtrebilco/glintercept/releases)
 
-##Basic usage##
+## Basic usage
 Select the version of GLIntercept right for the application being debugged (x86 or x64) 
 
 _**Note:**_ You select the version of GLIntercept based on if the _application_ is x86 or x64 (64bit) - not if the operating system is 64 bit.
@@ -18,7 +18,7 @@ intercept OpenGL calls.
 Then edit the gliConfig.ini file, enable the options required and then run the 
 application.
 
-##How it works##
+## How it works
 GLIntercept works by overriding the call to wglGetProcAddress, wrapping the real function pointer in some assembly and then returning it to the application being debugged. 
 
 This means that when new OpenGL extensions/versions are released, GLIntercept will automatically log the new functions.
@@ -28,10 +28,10 @@ However, while all function names are automatically logged, function parameters 
 eg.
 `void glClearColor( GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha );`
 
-##History##
+## History
 GLIntercept has existed since 2003 and was mainly designed as an OpenGL 1.0-2.1 debugger. So while basic function logging should work on all OpenGL versions, the more advanced features listed below may or may not work in OpenGL 3.0+. (especially when using a core OpenGL profile)
 
-##Features##
+## Features
 Main GLIntercept features:
 
 * Save all OpenGL function calls to text or [XML format](./Docs/Screenshots.md) with the option to log individual frames.
@@ -49,10 +49,10 @@ Main GLIntercept features:
 * [OpenGL extension/version override](./Docs/Screenshots.md). Add/remove/replace the OpenGL extension and version strings. (Test lower end rendering paths without changing cards)
 * OpenGL function stats - how many times each function is called.
 
-##License##
+## License
 *Note* Older versions of GLIntercept were licensed under the GPLv2. Newer versions (1.0+) are MIT licensed.
 
-##Links##
+## Links
 Similar OpenGL tools to GLIntercept are:
 
 * [RenderDoc](https://github.com/baldurk/renderdoc)
