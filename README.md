@@ -11,6 +11,8 @@ Select the version of GLIntercept right for the application being debugged (x86 
 
 _**Note:**_ You select the version of GLIntercept based on if the _application_ is x86 or x64 (64bit) - not if the operating system is 64 bit.
 
+_**Synergy Note:**_ GLIntercept uses key presses when doing some logging / debugging. The software Synergy conflicts with the key reading - so disable Synergy when using these features of GLIntercept.
+
 Then after installation, simply copy the opengl32.dll and a gliConfig.ini file from 
 the install directory to the executable folder of the application you want to
 intercept OpenGL calls. 

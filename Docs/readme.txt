@@ -39,6 +39,10 @@ operating system. Eg. You may be using 64 bit Windows, but you still need to use
 the 32 bit version of GLIntercept to debug 32 bit programs. 
 
 Also note that the 64 bit version of GLIntercept still uses the dll name OpenGL32.dll.
+
+*Synergy Note* GLIntercept uses key presses when doing some logging / debugging. 
+The software Synergy conflicts with the key reading - so disable Synergy when using 
+these features of GLIntercept.
   
 ============================================================
 1) Quick start guide
