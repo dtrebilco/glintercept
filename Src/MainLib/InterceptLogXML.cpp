@@ -241,7 +241,7 @@ void InterceptLogXML::LogFunctionPre(const FunctionData *funcData,uint index, co
         //Loop for all textures and log the stage and texture number
         for(uint i=0;i<boundTextures.size();i++)
         {
-          fprintf(logFile,"<TEXSTAGE number=\"%u\">",boundTextures[i].texStage);
+          fprintf(logFile,"<TEXSTAGE number=\"%u\" target=\"%s\">",boundTextures[i].texStage, ImageData::GetTextureShortString(boundTextures[i].texTarget));
           AddImageTag(boundTextures[i].texID);
           fprintf(logFile,"</TEXSTAGE>");
         }

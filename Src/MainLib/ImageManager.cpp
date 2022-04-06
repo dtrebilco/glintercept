@@ -34,42 +34,41 @@ pBufferBound(false)
 
 ///////////////////////////////////////////////////////////////////////////////
 //
+const char* ImageData::GetTextureShortString(GLenum glType)
+{
+  switch (glType)
+  {
+    case(GL_TEXTURE_1D):
+      return "1D";
+    case(GL_TEXTURE_2D):
+      return "2D";
+    case(GL_TEXTURE_3D):
+      return "3D";
+    case(GL_TEXTURE_CUBE_MAP):
+      return "CUBE";
+    case(GL_TEXTURE_RECTANGLE):
+      return "RECT";
+    case(GL_TEXTURE_1D_ARRAY):
+      return "1D_ARRAY";
+    case(GL_TEXTURE_2D_ARRAY):
+      return "2D_ARRAY";
+    case(GL_TEXTURE_BUFFER):
+      return "TEX_BUFFER";
+    default:
+      return "UNKNOWN";
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//
 bool ImageData::GetUniqueFileName(string &retString) const
 {
   //Set the initial image name
   retString = "Image_";
 
   //Append the image type
-  switch(glType)
-  {
-    case(GL_TEXTURE_1D):
-      retString = retString + "1D_";
-      break;
-    case(GL_TEXTURE_2D):
-      retString = retString + "2D_";
-      break;
-    case(GL_TEXTURE_3D):
-      retString = retString + "3D_";
-      break;
-    case(GL_TEXTURE_CUBE_MAP):
-      retString = retString + "CUBE_";
-      break;
-    case(GL_TEXTURE_RECTANGLE):
-      retString = retString + "NVRECT_";
-      break;
-    case(GL_TEXTURE_1D_ARRAY):
-      retString = retString + "1D_ARRAY_";
-      break;
-    case(GL_TEXTURE_2D_ARRAY):
-      retString = retString + "2D_ARRAY_";
-      break;
-    case(GL_TEXTURE_BUFFER):
-      retString = retString + "TEX_BUFFER_";
-      break;
-    default:
-      retString = retString + "UNKNOWN_";
-      break;
-  }
+  retString += GetTextureShortString(glType);
+  retString += "_";
 
   //Add an extra flag for p-buffers
   if(IsPBufferBound())

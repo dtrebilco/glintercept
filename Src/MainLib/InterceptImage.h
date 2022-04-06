@@ -32,6 +32,7 @@ struct BoundTexture
 {
   uint texID;        // The texture ID that is bound            
   uint texStage;     // The stage the ID is bound to
+  uint texTarget;    // The target the ID is bound to
 };
 
 typedef vector<BoundTexture> BoundTextureArray;
