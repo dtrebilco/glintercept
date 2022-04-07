@@ -1567,6 +1567,7 @@ void InterceptImage::GetBoundTextures(BoundTextureArray &retArray)
       BoundTexture newBoundTexture;
       newBoundTexture.texID = texID;
       newBoundTexture.texStage = t;
+      newBoundTexture.texTarget = GL_TEXTURE_1D;
       retArray.push_back(newBoundTexture);
     }
 
@@ -1577,6 +1578,7 @@ void InterceptImage::GetBoundTextures(BoundTextureArray &retArray)
       BoundTexture newBoundTexture;
       newBoundTexture.texID = texID;
       newBoundTexture.texStage = t;
+      newBoundTexture.texTarget = GL_TEXTURE_2D;
       retArray.push_back(newBoundTexture);
     }
 
@@ -1589,6 +1591,7 @@ void InterceptImage::GetBoundTextures(BoundTextureArray &retArray)
         BoundTexture newBoundTexture;
         newBoundTexture.texID = texID;
         newBoundTexture.texStage = t;
+        newBoundTexture.texTarget = GL_TEXTURE_RECTANGLE;
         retArray.push_back(newBoundTexture);
       }
     }
@@ -1602,6 +1605,7 @@ void InterceptImage::GetBoundTextures(BoundTextureArray &retArray)
         BoundTexture newBoundTexture;
         newBoundTexture.texID = texID;
         newBoundTexture.texStage = t;
+        newBoundTexture.texTarget = GL_TEXTURE_3D;
         retArray.push_back(newBoundTexture);
       }
     }
@@ -1615,6 +1619,7 @@ void InterceptImage::GetBoundTextures(BoundTextureArray &retArray)
         BoundTexture newBoundTexture;
         newBoundTexture.texID = texID;
         newBoundTexture.texStage = t;
+        newBoundTexture.texTarget = GL_TEXTURE_CUBE_MAP;
         retArray.push_back(newBoundTexture);
       }
     }
@@ -1627,6 +1632,7 @@ void InterceptImage::GetBoundTextures(BoundTextureArray &retArray)
         BoundTexture newBoundTexture;
         newBoundTexture.texID = texID;
         newBoundTexture.texStage = t;
+        newBoundTexture.texTarget = GL_TEXTURE_1D_ARRAY;
         retArray.push_back(newBoundTexture);
       }
     }
@@ -1639,6 +1645,7 @@ void InterceptImage::GetBoundTextures(BoundTextureArray &retArray)
         BoundTexture newBoundTexture;
         newBoundTexture.texID = texID;
         newBoundTexture.texStage = t;
+        newBoundTexture.texTarget = GL_TEXTURE_2D_ARRAY;
         retArray.push_back(newBoundTexture);
       }
     }
@@ -1651,6 +1658,7 @@ void InterceptImage::GetBoundTextures(BoundTextureArray &retArray)
         BoundTexture newBoundTexture;
         newBoundTexture.texID = texID;
         newBoundTexture.texStage = t;
+        newBoundTexture.texTarget = GL_TEXTURE_BUFFER;
         retArray.push_back(newBoundTexture);
       }
     }

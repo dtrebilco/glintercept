@@ -459,7 +459,7 @@
 <!-- Tex Stage processing -->
 <!-- ========================================================================== -->
 
-<xsl:template match="TEXSTAGE">(<xsl:value-of select="@number"/>,<xsl:apply-templates select="IMAGE"/>)
+<xsl:template match="TEXSTAGE">(<xsl:value-of select="@target"/>,<xsl:value-of select="@number"/>,<xsl:apply-templates select="IMAGE"/>)
 </xsl:template>
 
 

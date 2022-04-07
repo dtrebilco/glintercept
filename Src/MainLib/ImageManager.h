@@ -147,6 +147,18 @@ public:
 
   //@
   //  Summary:
+  //    To get a string identifying the texture type
+  //
+  //  Parameters:
+  //    glType  - The type of texture, e.g. GL_TEXTURE_2D
+  //
+  //  Returns:
+  //    A c-string, e.g. "2D"
+  //
+  static const char* GetTextureShortString(GLenum glType);
+
+  //@
+  //  Summary:
   //    To get a unique texture filename (including type,textureID and savecount)
   //    without any extension. 
   //  
