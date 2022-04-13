@@ -61,6 +61,7 @@ FrameLog;
 {
   LogEnabled = True;
   SaveFormat = JPG;
+  FullScreen = False;
   ColorBufferLog = (pre,post,diff);
   StencilColors = (0,0xFF000000,1,0xFFFF0000,2,0xFFFFFF00,3,0xFF0000FF,4,0xFF00FFFF,5,0xFFFF00FF,6,0xFF80FFFF,7,0xFFFFFFFF);
   FrameIcon;

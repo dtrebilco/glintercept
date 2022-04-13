@@ -10,6 +10,10 @@
 #include "ImageSaveManager.h"
 #include "MovieMaker.h"
 
+#ifdef GLI_BUILD_WINDOWS
+#include <Windows.h>
+#endif
+
 //The real OpenGL driver
 extern GLCoreDriver GLV;
 extern WGLDriver    GLW;
@@ -151,6 +155,7 @@ initFailed(false),
 extensionDrawBuffers(false),
 extensionPBO(false),
 extensionFBO(false),
+fullscreen(configData.frameFullScreen),
 numDrawBuffers(1),
 
 imageExtension(configData.frameImageFormat),
@@ -905,11 +910,43 @@ bool InterceptFrame::IsBufferReadable(GLenum bufType, uint bufferCount) const
 
 ///////////////////////////////////////////////////////////////////////////////
 //
+void InterceptFrame::GetBufferViewSize(GLint viewSize[4]) const
+{
+#ifdef GLI_BUILD_WINDOWS
+  if (this->fullscreen)
+  {
+      GLint fboId = 0;
+      GLV.glGetIntegerv(GL_READ_FRAMEBUFFER_BINDING, &fboId);
+      if (fboId == 0)
+      {
+          HDC hdc = GLW.wglGetCurrentDC();
+          HWND hwnd = WindowFromDC(hdc);
+          if (hwnd != nullptr)
+          {
+              RECT clientRect{};
+              if (GetClientRect(hwnd, &clientRect))
+              {
+                  viewSize[0] = 0;
+                  viewSize[1] = 0;
+                  viewSize[2] = clientRect.right - clientRect.left;
+                  viewSize[3] = clientRect.bottom - clientRect.top;
+                  return;
+              }
+          }
+      }
+  }
+#endif
+
+  GLV.glGetIntegerv(GL_VIEWPORT, &viewSize[0]);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//
 corona::Image *InterceptFrame::GetBuffer(GLenum bufType, uint bufferCount) const
 {
   //Get the size of the viewport
   GLint viewSize[4];
-  GLV.glGetIntegerv(GL_VIEWPORT,&viewSize[0]);
+  GetBufferViewSize(viewSize);
 
   //If the viewport does not have a size, return NULL
   if(viewSize[2] == 0 || viewSize[3] == 0)

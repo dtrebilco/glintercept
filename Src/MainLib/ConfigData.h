@@ -93,6 +93,7 @@ public:
 
 
   bool frameLogEnabled;                           // Flag to indicate if the frame log is enabled
+  bool frameFullScreen;                           // Flag to indicate if entire framebuffer should be saved
   vector<string> frameAdditionalRenderCalls;      // Additional functions for which to dump framebuffer
 
   string frameImageFormat;                        // The format to save frame images in.

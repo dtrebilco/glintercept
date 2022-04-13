@@ -188,6 +188,8 @@ protected:
   bool      extensionPBO;                         // Flag if the PBO extension is supported 
   bool      extensionFBO;                         // Flag if the FBO extension is supported (ARB or core version)
 
+  bool      fullscreen;                           // Flag if entire framebuffer is saved
+
   GLint     numDrawBuffers;                       // The number of draw buffers in use
 
   string    imageExtension;                       // The extension of the file format to savine images in (ie jpg/tga/png)  
@@ -308,6 +310,15 @@ protected:
   //    saveNamesIcon - The pre/post/diff icon file names to be assigned when saving data out.
   //
   void GetBufferDataPost(SaveFrameData *bufferData, string saveNames[FIDT_MAX], string saveNamesIcon[FIDT_MAX]) const;
+
+  //@
+  //  Summary:
+  //    To query view size of the framebuffer to save.
+  //
+  //  Parameters:
+  //    viewSize - array with four elements - x offset, y offset, width and height
+  //
+  void GetBufferViewSize(GLint viewSize[4]) const;
 
   //@
   //  Summary:
