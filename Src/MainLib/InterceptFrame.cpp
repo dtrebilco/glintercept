@@ -166,6 +166,8 @@ iglBindBuffer(NULL),
 iglGetFramebufferAttachmentParameteriv(NULL),
 iglBindFramebuffer(NULL),
 iglGetTexLevelParameteriv(NULL),
+iglGetRenderbufferParameteriv(NULL),
+iglBindRenderbuffer(NULL),
 
 depthSaveData(GL_DEPTH_COMPONENT, configData.framePreDepthSave,configData.framePostDepthSave,configData.frameDiffDepthSave),
 stencilSaveData(GL_STENCIL_INDEX, configData.framePreStencilSave,configData.framePostStencilSave,configData.frameDiffStencilSave),
