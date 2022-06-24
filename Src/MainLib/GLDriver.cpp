@@ -896,6 +896,14 @@ void GLDriver::ProcessFrameEnd()
         logStateChange = true;
       }
     }
+
+    for (int i = 0; i < configData.logFrameStartIndices.size(); i++)
+    {
+      if (frameNumber == configData.logFrameStartIndices[i])
+      {
+        logStateChange = true;
+      }
+    }
   }
 
   //Check if the limit of how many frame can be logged has been reached.

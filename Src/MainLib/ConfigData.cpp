@@ -339,6 +339,18 @@ void ConfigData::ReadPerFrameConfigData(ConfigParser &parser)
     }       
   }
 
+  //Get frame indices to begin and end logging automatically
+  testToken = perFrameToken->GetChildToken("FrameStartIndices");
+  if (testToken)
+  {
+      //Loop for the number of values in the token
+      for (uint i = 0; i < testToken->GetNumValues(); i++)
+      {
+          uint value;
+          testToken->Get(value, i);
+          logFrameStartIndices.push_back(value);
+      }
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
