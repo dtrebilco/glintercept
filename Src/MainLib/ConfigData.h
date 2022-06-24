@@ -59,6 +59,7 @@ public:
   bool logPerFrame;                               // Flag to indicate if we log per-frame or by the entire application
   bool logOneFrameOnly;                           // Flag to indicate if per-frame logging will only get one frame at a time
   vector<uint> logFrameKeys;                      // The key codes used to enable per-frame logging
+  vector<uint> logFrameStartIndices;              // Indices of frame to toggle logging
 
   string logPath;                                 // The path to write the log files (including trailing seperator)
   string logName;                                 // The name of the log to write out (without extension)

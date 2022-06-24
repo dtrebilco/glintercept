@@ -91,6 +91,8 @@ FunctionLog
 //  OneFrameOnly    - If enabled, will only log only one frame per key-press.
 //                    Loggers will be disabled at the end of the next frame.
 //
+//  FrameStartIndices - A list of frame indices to enable/disable logging.
+//
 //////////////////////////////////////////////////////////////
 
 LogPerFrame
@@ -98,6 +100,7 @@ LogPerFrame
   Enabled = True;
   FrameStartKeys = (ctrl,shift,f);
   OneFrameOnly = True; 
+  FrameStartIndices = ();
 }
 
 

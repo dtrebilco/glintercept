@@ -17,6 +17,7 @@ LogPerFrame;
   Enabled = True;
   FrameStartKeys = (ctrl,shift,f);
   OneFrameOnly = True;
+  FrameStartIndices = ();
 }
 InputFiles;
 {
