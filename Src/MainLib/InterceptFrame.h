@@ -207,6 +207,9 @@ protected:
   void (GLAPIENTRY *iglBindBuffer) (GLenum target, GLuint buffer); //PBO buffer setting entry point
   void (GLAPIENTRY *iglGetFramebufferAttachmentParameteriv) (GLenum target, GLenum attachment, GLenum pname, GLint *params); //OGL3.0/ FBO Entry point
   void (GLAPIENTRY *iglBindFramebuffer) (GLenum target, GLuint framebuffer);
+  void (GLAPIENTRY *iglGetTexLevelParameteriv) (GLenum target, GLint level, GLenum pname, GLint* params);
+  void (GLAPIENTRY *iglGetRenderbufferParameteriv) (GLenum target, GLenum pname, GLint* params);
+  void (GLAPIENTRY *iglBindRenderbuffer) (GLenum target, GLuint renderbuffer);
 
 
   //Structure to store the results of the frame data
@@ -316,9 +319,13 @@ protected:
   //    To query view size of the framebuffer to save.
   //
   //  Parameters:
+  //    bufType  - The buffer type to get. (ie GL_RGBA, GL_DEPTH_COMPONENT)
+  //
+  //    bufferCount - The index of the buffer type (ie there can be multiple
+  //                  color buffers)
   //    viewSize - array with four elements - x offset, y offset, width and height
   //
-  void GetBufferViewSize(GLint viewSize[4]) const;
+  void GetBufferViewSize(GLenum bufType, uint bufferCount, GLint viewSize[4]) const;
 
   //@
   //  Summary:
