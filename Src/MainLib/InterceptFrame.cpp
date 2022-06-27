@@ -958,8 +958,8 @@ void InterceptFrame::GetBufferViewSize(GLenum bufType, uint bufferCount, GLint v
         iglGetFramebufferAttachmentParameteriv(GL_DRAW_FRAMEBUFFER, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME, &textureName);
 
         GLint oldBinding;
-        GLV.glBindTexture(GL_TEXTURE_2D, textureName);
         GLV.glGetIntegerv(GL_TEXTURE_BINDING_2D, &oldBinding);
+        GLV.glBindTexture(GL_TEXTURE_2D, textureName);
         iglGetTexLevelParameteriv(GL_TEXTURE_2D, mipLevel, GL_TEXTURE_WIDTH, &viewSize[2]);
         iglGetTexLevelParameteriv(GL_TEXTURE_2D, mipLevel, GL_TEXTURE_HEIGHT, &viewSize[3]);
         GLV.glBindTexture(GL_TEXTURE_2D, oldBinding);
