@@ -70,6 +70,7 @@ shaderLogUniformsPreRender(false),
 displayListLogEnabled(false),
 
 frameLogEnabled(false),
+frameFullScreen(false),
 frameImageFormat("jpg"),
 framePreColorSave(false),
 framePostColorSave(false),
