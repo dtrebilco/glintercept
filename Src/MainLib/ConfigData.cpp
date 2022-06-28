@@ -70,6 +70,7 @@ shaderLogUniformsPreRender(false),
 displayListLogEnabled(false),
 
 frameLogEnabled(false),
+frameFullScreen(false),
 frameImageFormat("jpg"),
 framePreColorSave(false),
 framePostColorSave(false),
@@ -680,6 +681,12 @@ void ConfigData::ReadFrameConfigData(ConfigParser &parser)
     GetImageFormat(frameTestToken, frameImageFormat);
   }
 
+  // Get fullscreen flag
+  frameTestToken = frameLogToken->GetChildToken("FullScreen");
+  if (frameTestToken)
+  {
+      frameTestToken->Get(frameFullScreen);
+  }
 
   //Get if icon frame buffer saving is enabled
   const ConfigToken *frameIconToken = frameLogToken->GetChildToken("FrameIcon");

@@ -188,6 +188,8 @@ protected:
   bool      extensionPBO;                         // Flag if the PBO extension is supported 
   bool      extensionFBO;                         // Flag if the FBO extension is supported (ARB or core version)
 
+  bool      fullscreen;                           // Flag if entire framebuffer is saved
+
   GLint     numDrawBuffers;                       // The number of draw buffers in use
 
   string    imageExtension;                       // The extension of the file format to savine images in (ie jpg/tga/png)  
@@ -205,6 +207,9 @@ protected:
   void (GLAPIENTRY *iglBindBuffer) (GLenum target, GLuint buffer); //PBO buffer setting entry point
   void (GLAPIENTRY *iglGetFramebufferAttachmentParameteriv) (GLenum target, GLenum attachment, GLenum pname, GLint *params); //OGL3.0/ FBO Entry point
   void (GLAPIENTRY *iglBindFramebuffer) (GLenum target, GLuint framebuffer);
+  void (GLAPIENTRY *iglGetTexLevelParameteriv) (GLenum target, GLint level, GLenum pname, GLint* params);
+  void (GLAPIENTRY *iglGetRenderbufferParameteriv) (GLenum target, GLenum pname, GLint* params);
+  void (GLAPIENTRY *iglBindRenderbuffer) (GLenum target, GLuint renderbuffer);
 
 
   //Structure to store the results of the frame data
@@ -308,6 +313,19 @@ protected:
   //    saveNamesIcon - The pre/post/diff icon file names to be assigned when saving data out.
   //
   void GetBufferDataPost(SaveFrameData *bufferData, string saveNames[FIDT_MAX], string saveNamesIcon[FIDT_MAX]) const;
+
+  //@
+  //  Summary:
+  //    To query view size of the framebuffer to save.
+  //
+  //  Parameters:
+  //    bufType  - The buffer type to get. (ie GL_RGBA, GL_DEPTH_COMPONENT)
+  //
+  //    bufferCount - The index of the buffer type (ie there can be multiple
+  //                  color buffers)
+  //    viewSize - array with four elements - x offset, y offset, width and height
+  //
+  void GetBufferViewSize(GLenum bufType, uint bufferCount, GLint viewSize[4]) const;
 
   //@
   //  Summary:

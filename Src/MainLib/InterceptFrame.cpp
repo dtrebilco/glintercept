@@ -151,6 +151,7 @@ initFailed(false),
 extensionDrawBuffers(false),
 extensionPBO(false),
 extensionFBO(false),
+fullscreen(configData.frameFullScreen),
 numDrawBuffers(1),
 
 imageExtension(configData.frameImageFormat),
@@ -164,6 +165,9 @@ iconExtension(configData.frameIconImageFormat),
 iglBindBuffer(NULL),
 iglGetFramebufferAttachmentParameteriv(NULL),
 iglBindFramebuffer(NULL),
+iglGetTexLevelParameteriv(NULL),
+iglGetRenderbufferParameteriv(NULL),
+iglBindRenderbuffer(NULL),
 
 depthSaveData(GL_DEPTH_COMPONENT, configData.framePreDepthSave,configData.framePostDepthSave,configData.frameDiffDepthSave),
 stencilSaveData(GL_STENCIL_INDEX, configData.framePreStencilSave,configData.framePostStencilSave,configData.frameDiffStencilSave),
@@ -323,6 +327,9 @@ bool InterceptFrame::Init()
     iglBindFramebuffer = (void (GLAPIENTRY *)(GLenum, GLuint))GLW.glGetProcAddress("glBindFramebuffer");
   }
 
+  iglGetTexLevelParameteriv = GLV_Builtin.glGetTexLevelParameteriv;
+  iglGetRenderbufferParameteriv = (void (GLAPIENTRY*)(GLenum, GLenum, GLint*))GLW.glGetProcAddress("glGetRenderbufferParameteriv");
+  iglBindRenderbuffer = (void (GLAPIENTRY*)(GLenum, GLuint))GLW.glGetProcAddress("glBindRenderbuffer");
   return true;
 }
 
@@ -905,11 +912,86 @@ bool InterceptFrame::IsBufferReadable(GLenum bufType, uint bufferCount) const
 
 ///////////////////////////////////////////////////////////////////////////////
 //
+void InterceptFrame::GetBufferViewSize(GLenum bufType, uint bufferCount, GLint viewSize[4]) const
+{
+  viewSize[0] = 0;
+  viewSize[1] = 0;
+
+  if (this->fullscreen)
+  {
+    GLint fboId = 0;
+    if (extensionFBO) {
+      GLV.glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &fboId);
+    }
+    if (fboId == 0)
+    {
+      // Default framebuffer, get view size from window
+#ifdef GLI_BUILD_WINDOWS
+      HDC hdc = GLW.wglGetCurrentDC();
+      HWND hwnd = WindowFromDC(hdc);
+      if (hwnd != nullptr)
+      {
+        RECT clientRect{};
+        if (GetClientRect(hwnd, &clientRect))
+        {
+          viewSize[2] = clientRect.right - clientRect.left;
+          viewSize[3] = clientRect.bottom - clientRect.top;
+          return;
+        }
+      }
+#endif
+    }
+    else if(iglGetFramebufferAttachmentParameteriv)
+    {
+      // FBO created by application
+      GLenum attachment = (bufType == GL_RGBA) ? GL_COLOR_ATTACHMENT0 + bufferCount :
+                          (bufType == GL_DEPTH_COMPONENT) ? GL_DEPTH_ATTACHMENT :
+                          GL_STENCIL_ATTACHMENT;
+      GLint objectType = GL_NONE;
+      iglGetFramebufferAttachmentParameteriv(GL_DRAW_FRAMEBUFFER, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &objectType);
+      if (objectType == GL_TEXTURE && iglGetTexLevelParameteriv)
+      {
+        GLint mipLevel = 0;
+        iglGetFramebufferAttachmentParameteriv(GL_DRAW_FRAMEBUFFER, attachment, GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL, &mipLevel);
+
+        GLint textureName = 0;
+        iglGetFramebufferAttachmentParameteriv(GL_DRAW_FRAMEBUFFER, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME, &textureName);
+
+        GLint oldBinding;
+        GLV.glGetIntegerv(GL_TEXTURE_BINDING_2D, &oldBinding);
+        GLV.glBindTexture(GL_TEXTURE_2D, textureName);
+        iglGetTexLevelParameteriv(GL_TEXTURE_2D, mipLevel, GL_TEXTURE_WIDTH, &viewSize[2]);
+        iglGetTexLevelParameteriv(GL_TEXTURE_2D, mipLevel, GL_TEXTURE_HEIGHT, &viewSize[3]);
+        GLV.glBindTexture(GL_TEXTURE_2D, oldBinding);
+        return;
+      }
+      else if (objectType == GL_RENDERBUFFER && iglGetRenderbufferParameteriv && iglBindRenderbuffer)
+      {
+        GLint renderbufferName = 0;
+        iglGetFramebufferAttachmentParameteriv(GL_DRAW_FRAMEBUFFER, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME, &renderbufferName);
+
+        GLint oldBinding;
+        GLV.glGetIntegerv(GL_RENDERBUFFER_BINDING, &oldBinding);
+        iglBindRenderbuffer(GL_RENDERBUFFER, renderbufferName);
+        iglGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &viewSize[2]);
+        iglGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &viewSize[3]);
+        iglBindRenderbuffer(GL_RENDERBUFFER, oldBinding);
+        return;
+      }
+    }
+  }
+
+  // Fallback to GL_VIEWPORT-based approach
+  GLV.glGetIntegerv(GL_VIEWPORT, &viewSize[0]);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//
 corona::Image *InterceptFrame::GetBuffer(GLenum bufType, uint bufferCount) const
 {
   //Get the size of the viewport
   GLint viewSize[4];
-  GLV.glGetIntegerv(GL_VIEWPORT,&viewSize[0]);
+  GetBufferViewSize(bufType, bufferCount, viewSize);
 
   //If the viewport does not have a size, return NULL
   if(viewSize[2] == 0 || viewSize[3] == 0)
