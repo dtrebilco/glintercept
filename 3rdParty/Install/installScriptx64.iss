@@ -20,5 +20,4 @@ ArchitecturesInstallIn64BitMode=x64
 [Files]
 Source: "..\..\Bin\MainLibx64\OpenGL32.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\Bin\Plugins\*.*"; DestDir: "{app}\Plugins"; Excludes: "GL*.dll,TestPlugin.dll"; Flags: ignoreversion recursesubdirs
-Source: "..\..\Bin\Pluginsx64\*.*"; DestDir: "{app}\Plugins"; Flags: ignoreversion recursesubdirs
 

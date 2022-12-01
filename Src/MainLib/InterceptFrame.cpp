@@ -327,7 +327,7 @@ bool InterceptFrame::Init()
     iglBindFramebuffer = (void (GLAPIENTRY *)(GLenum, GLuint))GLW.glGetProcAddress("glBindFramebuffer");
   }
 
-  iglGetTexLevelParameteriv = GLV_Builtin.glGetTexLevelParameteriv;
+  iglGetTexLevelParameteriv = GLV.glGetTexLevelParameteriv;
   iglGetRenderbufferParameteriv = (void (GLAPIENTRY*)(GLenum, GLenum, GLint*))GLW.glGetProcAddress("glGetRenderbufferParameteriv");
   iglBindRenderbuffer = (void (GLAPIENTRY*)(GLenum, GLuint))GLW.glGetProcAddress("glBindRenderbuffer");
   return true;
