@@ -46,6 +46,7 @@ Type: files; Name: "{app}\*.ini"
 
 procedure After_INI_Install(inFile : String);
 var
+  FileDataAnsi : AnsiString;
   FileData : String;
   GLIConfig: String;
 
@@ -54,7 +55,8 @@ begin
   inFile := ExpandConstant(inFile);
   
   // Read the entire config file
-  if LoadStringFromFile(inFile,FileData) then begin
+  if LoadStringFromFile(inFile,FileDataAnsi) then begin
+    FileData := String(FileDataAnsi)
 
     //Swap the specific characters with the path
     GLIConfig := ExpandConstant('{app}');
